@@ -19,10 +19,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.IStringSerializable;
-import net.minecraft.util.NonNullList;
+import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
@@ -177,38 +174,34 @@ public class RoadBlock extends BlockBase {
     public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
 		return checkSideRendering(state, world, pos, face);
     }
-    
-    private boolean checkSideRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
-    	IBlockState offsetState = world.getBlockState(pos.offset(face));
-    	
-    	if (face == EnumFacing.UP && this.getMetaFromState(state) < 15) {
-    		return true; //There's no reason for non-full height road blocks to ever cull.
-    	}
-    	
-    	//I have to check this because apparently other mods aren't setting their block face shape properly, annoying and worse for performance but
-    	//nothing more I can do. Go shout at other mods to set their block face shapes (if it's not a full, solid face, it shouldn't be set to solid!!).
-    	//I am only doing this on the top face. If you're getting culling issues with other sides either tell me and I'll shout at the dev, or go show them this comment.
-    	// :)
-    	if (face == EnumFacing.UP && (!offsetState.isFullCube() || !offsetState.isOpaqueCube()) && !offsetState.getBlock().isAir(offsetState, world, pos.offset(face))) {
-    		return false;
-    	}
-    	
-    	
-    	if (face == EnumFacing.DOWN && offsetState.getBlock() instanceof RoadBlock && offsetState.getBlock().getMetaFromState(offsetState) < 15) {
-    		return true;
-    	}
 
-		if (offsetState.getBlock() instanceof RoadBlock && offsetState.getBlock().getMetaFromState(offsetState) >= this.getMetaFromState(state)) {
+	private boolean checkSideRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		IBlockState offsetState = world.getBlockState(pos.offset(face));
+
+		if (face == EnumFacing.UP && this.getMetaFromState(state) < 15) {
+			return true; //There's no reason for non-full height road blocks to ever cull.
+		}
+
+		if (offsetState.getBlock() instanceof RoadBlock && offsetState.getBlock().getMetaFromState(offsetState) >= getMetaFromState(state)) {
 			return false;
 		}
-		
+		if(!(offsetState.getBlock().getBlockLayer().equals(BlockRenderLayer.SOLID)))
+		{
+
+			return true;
+		}
+		if((offsetState.getBlock() instanceof RoadBlock) && face == EnumFacing.UP && offsetState.getBlock().getMetaFromState(offsetState) < 15)
+		{
+			System.out.println(offsetState.getBlock().getBlockLayer().toString() + "--" + offsetState.getBlock().getLocalizedName());
+			return true;
+		}
 		if (offsetState.getBlockFaceShape(world, pos.offset(face), face.getOpposite()) == BlockFaceShape.SOLID) {
 			return false;
 		}
-		
+
 		return true;
 	}
-    
+
     @Override
     public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
     	if (this.getMetaFromState(state) < 15 && face != EnumFacing.DOWN && face != EnumFacing.UP) {
