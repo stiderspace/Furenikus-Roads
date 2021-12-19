@@ -148,11 +148,11 @@ public class BarsBarrierBlock extends BlockBase implements IConnectable {
     	return new AxisAlignedBB(xLow, -1+getBlockBelowHeight(world, pos)-(1-height), zLow, xHigh, -1+getBlockBelowHeight(world, pos)+1.25-(1-height), zHigh);
     }
     
-    @Override
-    public Block.EnumOffsetType getOffsetType()
-    {
-        return Block.EnumOffsetType.XYZ;
-    }
+//    @Override
+//    public Block.EnumOffsetType getOffsetType()
+//    {
+//        return Block.EnumOffsetType.XYZ;
+//    }
     
     @Override
     public Vec3d getOffset(IBlockState state, IBlockAccess worldIn, BlockPos pos) {

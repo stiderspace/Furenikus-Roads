@@ -370,13 +370,13 @@ public class BarrierEdgeBlock extends BlockBase {
     }
 	
 	
-	
-	@Override
-    public Block.EnumOffsetType getOffsetType()
-    {
-        return Block.EnumOffsetType.XYZ;
-    }
-    
+//
+//	@Override
+//    public Block.EnumOffsetType getOffsetType()
+//    {
+//        return Block.EnumOffsetType.XYZ;
+//    }
+//
     @Override
     public Vec3d getOffset(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
         double offset = 1.0 - getBlockBelowHeight(worldIn, pos);

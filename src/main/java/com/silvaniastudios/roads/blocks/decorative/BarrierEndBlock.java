@@ -128,11 +128,11 @@ public class BarrierEndBlock extends BlockBase implements IConnectable, IMetaBlo
     	return new AxisAlignedBB(0, -1+getBlockBelowHeight(world, pos), 0, 1, -1+getBlockBelowHeight(world, pos)+1.0, 1);
     }
     
-    @Override
-    public Block.EnumOffsetType getOffsetType()
-    {
-        return Block.EnumOffsetType.XYZ;
-    }
+//    @Override
+//    public Block.EnumOffsetType getOffsetType()
+//    {
+//        return Block.EnumOffsetType.XYZ;
+//    }
     
     @Override
     public Vec3d getOffset(IBlockState state, IBlockAccess worldIn, BlockPos pos) {

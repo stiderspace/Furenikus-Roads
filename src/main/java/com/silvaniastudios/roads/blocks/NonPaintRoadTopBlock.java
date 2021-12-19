@@ -72,12 +72,12 @@ public class NonPaintRoadTopBlock extends BlockBase {
         return new AxisAlignedBB(0.0D, -1+getBlockBelowHeight(worldIn, pos), 0.0D, 1.0D, -1+getBlockBelowHeight(worldIn, pos)+0.0625, 1.0D);
     }
     
-    @Override
-    public Block.EnumOffsetType getOffsetType()
-    {
-        return Block.EnumOffsetType.XYZ;
-    }
-    
+//    @Override
+//    public Block.EnumOffsetType getOffsetType()
+//    {
+//        return Block.EnumOffsetType.XYZ;
+//    }
+//
     @Override
     public Vec3d getOffset(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
         double offset = 1.0 - getBlockBelowHeight(worldIn, pos);
