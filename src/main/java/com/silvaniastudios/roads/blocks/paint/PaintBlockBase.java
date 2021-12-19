@@ -8,7 +8,7 @@ import com.silvaniastudios.roads.FurenikusRoads;
 import com.silvaniastudios.roads.RoadsConfig;
 import com.silvaniastudios.roads.blocks.BlockBase;
 import com.silvaniastudios.roads.blocks.NonPaintRoadTopBlock;
-import com.silvaniastudios.roads.blocks.CurbBlock;
+import com.silvaniastudios.roads.blocks.decorative.CurbBlock;
 import com.silvaniastudios.roads.items.FRItems;
 import com.silvaniastudios.roads.items.PaintGun;
 import com.silvaniastudios.roads.items.PaintGunItemRegistry;

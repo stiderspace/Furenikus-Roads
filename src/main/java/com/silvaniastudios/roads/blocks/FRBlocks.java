@@ -1,28 +1,8 @@
 package com.silvaniastudios.roads.blocks;
 
-import java.util.ArrayList;
-
 import com.silvaniastudios.roads.FurenikusRoads;
-import com.silvaniastudios.roads.blocks.paint.ArrowDiagonalPaintBlock;
-import com.silvaniastudios.roads.blocks.paint.ArrowLinePaintBlock;
-import com.silvaniastudios.roads.blocks.paint.ArrowPaintBlock;
-import com.silvaniastudios.roads.blocks.paint.ChevronPaintBlock;
-import com.silvaniastudios.roads.blocks.paint.ChevronSideLinePaintBlock;
-import com.silvaniastudios.roads.blocks.paint.Connected1x2PaintBlock;
-import com.silvaniastudios.roads.blocks.paint.Connected1x4PaintBlock;
-import com.silvaniastudios.roads.blocks.paint.Connected3x1PaintBlock;
-import com.silvaniastudios.roads.blocks.paint.CrossingPaintBlock;
-import com.silvaniastudios.roads.blocks.paint.FarSideLinePaintBlock;
-import com.silvaniastudios.roads.blocks.paint.HatchBoxPaintBlock;
-import com.silvaniastudios.roads.blocks.paint.IconPaintBlock;
-import com.silvaniastudios.roads.blocks.paint.JunctionFilterLinePaintBlock;
-import com.silvaniastudios.roads.blocks.paint.JunctionPaintBlock;
-import com.silvaniastudios.roads.blocks.paint.LetterPaintBlock;
-import com.silvaniastudios.roads.blocks.paint.LinePaintBlock;
-import com.silvaniastudios.roads.blocks.paint.MultiIconPaintBlock;
-import com.silvaniastudios.roads.blocks.paint.PaintBlockBase;
-import com.silvaniastudios.roads.blocks.paint.SideLinePaintBlock;
-import com.silvaniastudios.roads.blocks.paint.SimpleLinePaintBlock;
+import com.silvaniastudios.roads.blocks.decorative.*;
+import com.silvaniastudios.roads.blocks.paint.*;
 import com.silvaniastudios.roads.blocks.tileentities.compactor.CompactorBlock;
 import com.silvaniastudios.roads.blocks.tileentities.compactor.CompactorElectricEntity;
 import com.silvaniastudios.roads.blocks.tileentities.compactor.CompactorEntity;
@@ -53,7 +33,6 @@ import com.silvaniastudios.roads.fluids.FRFluids;
 import com.silvaniastudios.roads.items.FRItems;
 import com.silvaniastudios.roads.items.PaintGunItemRegistry;
 import com.silvaniastudios.roads.items.RoadItemBlock;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -66,13 +45,15 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
+import java.util.ArrayList;
+
 public class FRBlocks {
-	
+
 	public static ArrayList<RoadBlock> roadBlockList = new ArrayList<RoadBlock>();
 	public static ArrayList<PaintBlockBase> paintBlockList = new ArrayList<PaintBlockBase>();
 	public static ArrayList<BlockBase> catsEyeList = new ArrayList<BlockBase>();
 	public static ArrayList<BlockBase> genericList = new ArrayList<BlockBase>();
-	
+
 	//Tarmac variants
 	public static RoadBlock road_block_standard = new RoadBlock("road_block_standard", Material.ROCK, FRItems.tarmac_fragment_standard);
 	public static RoadBlock road_block_concrete_1 = new RoadBlock("road_block_concrete_1", Material.ROCK, FRItems.tarmac_fragment_concrete_1);
@@ -88,7 +69,7 @@ public class FRBlocks {
 	public static RoadBlock road_block_green = new RoadBlock("road_block_green", Material.ROCK, FRItems.tarmac_fragment_green);
 	public static RoadBlock road_block_muddy = new RoadBlock("road_block_muddy", Material.GROUND, FRItems.tarmac_fragment_muddy);
 	public static RoadBlock road_block_muddy_dried = new RoadBlock("road_block_muddy_dried", Material.GROUND, FRItems.tarmac_fragment_muddy);
-	
+
 	public static RoadBlock road_block_stone = new RoadBlock("road_block_stone", Material.ROCK, FRItems.tarmac_fragment_stone);
 	public static RoadBlock road_block_grass = new RoadBlock("road_block_grass", Material.GRASS, FRItems.tarmac_fragment_grass);
 	public static RoadBlock road_block_dirt = new RoadBlock("road_block_dirt", Material.GROUND, FRItems.tarmac_fragment_dirt);
@@ -96,7 +77,7 @@ public class FRBlocks {
 	public static RoadBlock road_block_sand = new RoadBlock("road_block_sand", Material.SAND, FRItems.tarmac_fragment_sand);
 
 	public static CurbBlock kerb_standard = new CurbBlock("kerb_standard", Material.ROCK);
-	
+
 	public static PaintFillerBlock paint_filler = new PaintFillerBlock("paint_filler", false);
 	public static TarDistillerBlock tar_distiller = new TarDistillerBlock("tar_distiller", false);
 	public static RoadFactoryBlock road_factory = new RoadFactoryBlock("road_factory", false);
@@ -105,7 +86,7 @@ public class FRBlocks {
 	public static PaintOvenBlock paint_oven = new PaintOvenBlock("paint_oven", false);
 	public static CompactorBlock compactor = new CompactorBlock("compactor", false);
 	public static FabricatorBlock fabricator = new FabricatorBlock("fabricator", false);
-	
+
 	public static PaintFillerBlock paint_filler_electric = new PaintFillerBlock("paint_filler_electric", true);
 	public static TarDistillerBlock tar_distiller_electric = new TarDistillerBlock("tar_distiller_electric", true);
 	public static RoadFactoryBlock road_factory_electric = new RoadFactoryBlock("road_factory_electric", true);
@@ -114,30 +95,30 @@ public class FRBlocks {
 	public static PaintOvenBlock paint_oven_electric = new PaintOvenBlock("paint_oven_electric", true);
 	public static CompactorBlock compactor_electric = new CompactorBlock("compactor_electric", true);
 	public static FabricatorBlock fabricator_electric = new FabricatorBlock("fabricator_electric", true);
-	
+
 	public static PaintFillerHopperBlock paint_filler_hopper = new PaintFillerHopperBlock("paint_filler_hopper");
-	
+
 	public static BlockFluidClassic tar_fluid = (BlockFluidClassic) new BlockFluidClassic(FRFluids.tar, Material.WATER).setUnlocalizedName(FurenikusRoads.MODID + ".tar_fluid").setRegistryName("tar_fluid");
 	public static BlockFluidClassic paint_white_fluid = (BlockFluidClassic) new BlockFluidClassic(FRFluids.white_paint, Material.WATER).setUnlocalizedName(FurenikusRoads.MODID + ".paint_white_fluid").setRegistryName("paint_white_fluid");
 	public static BlockFluidClassic paint_yellow_fluid = (BlockFluidClassic) new BlockFluidClassic(FRFluids.yellow_paint, Material.WATER).setUnlocalizedName(FurenikusRoads.MODID + ".paint_yellow_fluid").setRegistryName("paint_yellow_fluid");
 	public static BlockFluidClassic paint_red_fluid = (BlockFluidClassic) new BlockFluidClassic(FRFluids.red_paint, Material.WATER).setUnlocalizedName(FurenikusRoads.MODID + ".paint_red_fluid").setRegistryName("paint_red_fluid");
-		
+
 	public static StreetBlock street_block_a = (StreetBlock) new StreetBlock("street_block_a", 16).setCreativeTab(FurenikusRoads.tab_sidewalks);
 	public static StreetBlock street_block_b = (StreetBlock) new StreetBlock("street_block_b", 16).setCreativeTab(FurenikusRoads.tab_sidewalks);
 	public static StreetBlock generic_blocks = (StreetBlock) new StreetBlock("generic_blocks", 4).setCreativeTab(FurenikusRoads.tab_sidewalks);
-	
+
 	public static StreetRoadBlock sidewalk = new StreetRoadBlock("sidewalk", Material.ROCK, FRItems.sidewalk_fragment_standard);
 	public static StreetRoadBlock sidewalk_clean = new StreetRoadBlock("sidewalk_clean", Material.ROCK, FRItems.sidewalk_fragment_clean);
 	public static StreetRoadBlock sidewalk_dark = new StreetRoadBlock("sidewalk_dark", Material.ROCK, FRItems.sidewalk_fragment_dark);
 	public static StreetRoadBlock sidewalk_tan = new StreetRoadBlock("sidewalk_tan", Material.ROCK, FRItems.sidewalk_fragment_tan);
 	//tactile bump under-side tile
-	
+
 	public static NonPaintRoadTopBlock tactile_crossing_bumps = new NonPaintRoadTopBlock("tactile_crossing_bumps");
 	public static NonPaintRoadTopBlock manhole_cover_round = new NonPaintRoadTopBlock("manhole_cover_round");
 	public static NonPaintRoadTopBlock manhole_cover_square = new NonPaintRoadTopBlock("manhole_cover_square");
 	public static NonPaintRoadTopBlock drain_cover_1 = new NonPaintRoadTopBlock("drain_cover_1");
 	public static NonPaintRoadTopBlock drain_cover_2 = new NonPaintRoadTopBlock("drain_cover_2");
-	
+
 	public static BarrierBlock barrier_standard_mid = new BarrierBlock("barrier_standard_mid");
 	public static BarrierBlock barrier_tall_mid = new BarrierBlock("barrier_tall_mid");
 	public static ConcreteBarrierBlock barrier_concrete_1_mid = new ConcreteBarrierBlock("barrier_concrete_1_mid");
@@ -153,7 +134,7 @@ public class FRBlocks {
 	public static BarsBarrierBlock barrier_wall_pole_mid_concrete_2 = new BarsBarrierBlock("barrier_wall_pole_mid_concrete_2");
 	public static BarsBarrierBlock barrier_low_mid = new BarsBarrierBlock("barrier_low_mid", 0.5F);
 	public static BarrierEndBlock barrier_end = new BarrierEndBlock("barrier_end");
-	
+
 	public static BarrierEdgeBlock barrier_bars_edge = new BarrierEdgeBlock("barrier_bars_edge", false);
 	public static BarrierEdgeBlock barrier_bars_edge_2 = new BarrierEdgeBlock("barrier_bars_edge_2", false);
 	public static BarrierEdgeBlock barrier_bars_edge_3 = new BarrierEdgeBlock("barrier_bars_edge_3", false);
@@ -168,7 +149,7 @@ public class FRBlocks {
 	public static BarrierEdgeBlock barrier_wall_pole_edge_concrete_1 = new BarrierEdgeBlock("barrier_wall_pole_edge_concrete_1", false);
 	public static BarrierEdgeBlock barrier_wall_pole_edge_concrete_2 = new BarrierEdgeBlock("barrier_wall_pole_edge_concrete_2", false);
 	public static BarrierLowEdgeBlock barrier_low_edge = new BarrierLowEdgeBlock("barrier_low_edge", false);
-	
+
 	public static BarrierEdgeBlock barrier_bars_edge_double = new BarrierEdgeBlock("barrier_bars_edge_double", true);
 	public static BarrierEdgeBlock barrier_bars_edge_double_2 = new BarrierEdgeBlock("barrier_bars_edge_double_2", true);
 	public static BarrierEdgeBlock barrier_bars_edge_double_3 = new BarrierEdgeBlock("barrier_bars_edge_double_3", true);
@@ -180,18 +161,18 @@ public class FRBlocks {
 	public static BarrierEdgeBlock barrier_wall_pole_edge_concrete_2_double = new BarrierEdgeBlock("barrier_wall_pole_edge_concrete_2_double", true);
 	public static BarrierEdgeBlock barrier_standard_edge_double = new BarrierEdgeBlock("barrier_standard_edge_double", true);
 	public static BarrierEdgeBlock barrier_tall_edge_double = new BarrierEdgeBlock("barrier_tall_edge_double", true);
-	
-	
+
+
 	public static BollardBlock bollard_1 = new BollardBlock("bollard_1");
 	public static StandardBollardBlock bollard_2 = new StandardBollardBlock("bollard_2");
 	public static RetractableBollardBlock bollard_3 = new RetractableBollardBlock("bollard_3");
 	public static FoldingBollardBlock bollard_folding_smooth_metal = new FoldingBollardBlock("bollard_folding_smooth_metal");
 	public static FoldingBollardBlock bollard_folding_black = new FoldingBollardBlock("bollard_folding_black");
 	public static FoldingBollardBlock bollard_folding_yellow = new FoldingBollardBlock("bollard_folding_yellow");
-	
+
 	public static WheelStopBlock wheel_stop = new WheelStopBlock("wheel_stop");
 	public static SpeedBumpBlock speed_bump = new SpeedBumpBlock("speed_bump");
-	
+
 	public static CatsEyeBlock cats_eye_white  = new CatsEyeBlock("cats_eye_white", false);
 	public static CatsEyeBlock cats_eye_yellow = new CatsEyeBlock("cats_eye_yellow", false);
 	public static CatsEyeBlock cats_eye_red    = new CatsEyeBlock("cats_eye_red", false);
@@ -202,7 +183,7 @@ public class FRBlocks {
 	public static CatsEyeBlockFourWay cats_eye_white_yellow = new CatsEyeBlockFourWay("cats_eye_white_yellow", false);
 	public static CatsEyeBlockFourWay cats_eye_white_green = new CatsEyeBlockFourWay("cats_eye_white_green", false);
 	public static CatsEyeBlockFourWay cats_eye_yellow_red = new CatsEyeBlockFourWay("cats_eye_yellow_red", false);
-	
+
 	public static CatsEyeBlock cats_eye_white_double  = new CatsEyeBlock("cats_eye_white_double", true);
 	public static CatsEyeBlock cats_eye_yellow_double = new CatsEyeBlock("cats_eye_yellow_double", true);
 	public static CatsEyeBlock cats_eye_red_double    = new CatsEyeBlock("cats_eye_red_double", true);
@@ -213,18 +194,18 @@ public class FRBlocks {
 	public static CatsEyeBlockFourWay cats_eye_white_yellow_double = new CatsEyeBlockFourWay("cats_eye_white_yellow_double", true);
 	public static CatsEyeBlockFourWay cats_eye_white_green_double = new CatsEyeBlockFourWay("cats_eye_white_green_double", true);
 	public static CatsEyeBlockFourWay cats_eye_yellow_red_double = new CatsEyeBlockFourWay("cats_eye_yellow_red_double", true);
-	
+
 	public static MetalPost post_small_vertical = new MetalPost("post_small_vertical", false, 0.125);
 	public static MetalPost post_small_horizontal = new MetalPost("post_small_horizontal", true, 0.125);
 	public static MetalPost post_medium_vertical = new MetalPost("post_medium_vertical", false, 0.25);
 	public static MetalPost post_medium_horizontal = new MetalPost("post_medium_horizontal", true, 0.25);
 	public static MetalPost post_large_vertical = new MetalPost("post_large_vertical", false, 0.375);
 	public static MetalPost post_large_horizontal = new MetalPost("post_large_horizontal", true, 0.375);
-	
+
 	public static MetalPost post_small_vertical_2 = new MetalPost("post_small_vertical_2", false, 0.125);
 	public static MetalPost post_medium_vertical_2 = new MetalPost("post_medium_vertical_2", false, 0.25);
 	public static MetalPost post_large_vertical_2 = new MetalPost("post_large_vertical_2", false, 0.375);
-	
+
 	public static StreetLight street_light_1 = new StreetLight("street_light_1", 10, 3, 2);
 	public static StreetLight street_light_2 = new StreetLight("street_light_2", 16, 5, 2);
 	public static StreetLight street_light_3 = new StreetLight("street_light_3", 10, 2.5, 2);
@@ -232,9 +213,9 @@ public class FRBlocks {
 	public static StreetLight street_light_5 = new StreetLight("street_light_5", 16, 3, 5);
 	public static StreetLight street_light_6 = new StreetLight("street_light_6", 16, 3, 5);
 	//pedestrian crossing metal markers
-	
+
 	public static BlockFakeLight fake_light_source = new BlockFakeLight("fake_light_source");
-	
+
 	public static LinePaintBlock line_white_straight_full = new LinePaintBlock("line_white_straight_full");
 	public static LinePaintBlock line_white_straight_thick = new LinePaintBlock("line_white_straight_thick");
 	public static LinePaintBlock line_white_straight_double = new LinePaintBlock("line_white_straight_double");
@@ -261,44 +242,44 @@ public class FRBlocks {
 	public static JunctionPaintBlock white_junction_b = new JunctionPaintBlock("white_junction_b");
 	public static IconPaintBlock white_chevron = new IconPaintBlock("white_chevron");
 	public static SimpleLinePaintBlock line_white_thin_crossing = new SimpleLinePaintBlock("line_white_thin_crossing");
-	
+
 	public static Connected1x2PaintBlock white_pedestrian = new Connected1x2PaintBlock("white_pedestrian");
 	public static Connected1x2PaintBlock white_merge_arrow = new Connected1x2PaintBlock("white_merge_arrow");
 	public static Connected1x2PaintBlock white_give_way = new Connected1x2PaintBlock("white_give_way");
-	
+
 	public static JunctionFilterLinePaintBlock white_junction_filter_left = new JunctionFilterLinePaintBlock("white_junction_filter_left", true);
 	public static JunctionFilterLinePaintBlock white_junction_filter_left_thin  = new JunctionFilterLinePaintBlock("white_junction_filter_left_thin", true);
 	public static JunctionFilterLinePaintBlock white_junction_filter_left_empty = new JunctionFilterLinePaintBlock("white_junction_filter_left_empty", true);
 	public static JunctionFilterLinePaintBlock white_junction_filter_right = new JunctionFilterLinePaintBlock("white_junction_filter_right", false);
 	public static JunctionFilterLinePaintBlock white_junction_filter_right_thin  = new JunctionFilterLinePaintBlock("white_junction_filter_right_thin", false);
 	public static JunctionFilterLinePaintBlock white_junction_filter_right_empty = new JunctionFilterLinePaintBlock("white_junction_filter_right_empty", false);
-	
+
 	public static ChevronSideLinePaintBlock white_chevron_side_line = new ChevronSideLinePaintBlock("white_chevron_side_line");
-	
+
 	public static ChevronPaintBlock white_chevron_left_a = new ChevronPaintBlock("white_chevron_left_a", ChevronPaintBlock.EnumJunctionConnections.CHEVRON_A, true);
 	public static ChevronPaintBlock white_chevron_left_b = new ChevronPaintBlock("white_chevron_left_b", ChevronPaintBlock.EnumJunctionConnections.CHEVRON_B, false);
 	public static ChevronPaintBlock white_chevron_left_a_thin = new ChevronPaintBlock("white_chevron_left_a_thin", ChevronPaintBlock.EnumJunctionConnections.CHEVRON_THIN_A, true);
 	public static ChevronPaintBlock white_chevron_left_b_thin = new ChevronPaintBlock("white_chevron_left_b_thin", ChevronPaintBlock.EnumJunctionConnections.CHEVRON_THIN_B, false);
-	
+
 	public static ChevronPaintBlock white_chevron_right_a = new ChevronPaintBlock("white_chevron_right_a", ChevronPaintBlock.EnumJunctionConnections.CHEVRON_A, true);
 	public static ChevronPaintBlock white_chevron_right_b = new ChevronPaintBlock("white_chevron_right_b", ChevronPaintBlock.EnumJunctionConnections.CHEVRON_B, false);
 	public static ChevronPaintBlock white_chevron_right_a_thin = new ChevronPaintBlock("white_chevron_right_a_thin", ChevronPaintBlock.EnumJunctionConnections.CHEVRON_THIN_A, true);
 	public static ChevronPaintBlock white_chevron_right_b_thin = new ChevronPaintBlock("white_chevron_right_b_thin", ChevronPaintBlock.EnumJunctionConnections.CHEVRON_THIN_B, false);
-	
+
 	public static MultiIconPaintBlock white_chevron_mid = new MultiIconPaintBlock("white_chevron_mid", true);
 	public static Connected1x4PaintBlock white_junction_fork_mid = new Connected1x4PaintBlock("white_junction_fork_mid", false);
 	public static Connected1x4PaintBlock white_junction_fork_mid_thin = new Connected1x4PaintBlock("white_junction_fork_mid_thin", false);
 	public static Connected1x4PaintBlock white_junction_fork_chevron_mid = new Connected1x4PaintBlock("white_junction_fork_chevron_mid", false);
 	public static Connected1x4PaintBlock white_junction_fork_chevron_mid_thin = new Connected1x4PaintBlock("white_junction_fork_chevron_mid_thin", false);
-		
+
 	public static MultiIconPaintBlock white_chevron_mid_left = new MultiIconPaintBlock("white_chevron_mid_left", true);
 	public static MultiIconPaintBlock white_chevron_mid_right = new MultiIconPaintBlock("white_chevron_mid_right", true);
-	
+
 	public static MultiIconPaintBlock white_junction_side_line_connection = new MultiIconPaintBlock("white_junction_side_line_connection", true);
 	public static MultiIconPaintBlock white_junction_side_line_connection_thin = new MultiIconPaintBlock("white_junction_side_line_connection_thin", true);
 	public static MultiIconPaintBlock white_junction_side_line_connection_thick_thick = new MultiIconPaintBlock("white_junction_side_line_connection_thick_thick", true);
 	public static MultiIconPaintBlock white_junction_mid_line_connection = new MultiIconPaintBlock("white_junction_mid_line_connection", true);
-	
+
 	public static Connected3x1PaintBlock white_slow  = new Connected3x1PaintBlock("white_slow");
 	public static Connected3x1PaintBlock white_stop  = new Connected3x1PaintBlock("white_stop");
 	public static Connected3x1PaintBlock white_bike  = new Connected3x1PaintBlock("white_bike");
@@ -317,7 +298,7 @@ public class FRBlocks {
 	public static Connected3x1PaintBlock white_town = new Connected3x1PaintBlock("white_town");
 	public static Connected3x1PaintBlock white_city = new Connected3x1PaintBlock("white_city");
 	public static Connected3x1PaintBlock white_ctre = new Connected3x1PaintBlock("white_ctre");
-	
+
 	public static LetterPaintBlock paint_letter_white_ab = new LetterPaintBlock("paint_letter_white_ab");
 	public static LetterPaintBlock paint_letter_white_cd = new LetterPaintBlock("paint_letter_white_cd");
 	public static LetterPaintBlock paint_letter_white_ef = new LetterPaintBlock("paint_letter_white_ef");
@@ -338,9 +319,9 @@ public class FRBlocks {
 	public static LetterPaintBlock paint_letter_white_89 = new LetterPaintBlock("paint_letter_white_89");
 	public static LetterPaintBlock paint_letter_white_punct_question_exclamation = new LetterPaintBlock("paint_letter_white_punct_question_exclamation");
 	public static LetterPaintBlock paint_letter_white_punct_hash_slash = new LetterPaintBlock("paint_letter_white_punct_hash_slash");
-	
-	
-	
+
+
+
 	public static LinePaintBlock line_yellow_straight_full = new LinePaintBlock("line_yellow_straight_full");
 	public static LinePaintBlock line_yellow_straight_thick = new LinePaintBlock("line_yellow_straight_thick");
 	public static LinePaintBlock line_yellow_straight_double = new LinePaintBlock("line_yellow_straight_double");
@@ -367,44 +348,44 @@ public class FRBlocks {
 	public static JunctionPaintBlock yellow_junction_b = new JunctionPaintBlock("yellow_junction_b");
 	public static IconPaintBlock yellow_chevron = new IconPaintBlock("yellow_chevron");
 	public static SimpleLinePaintBlock line_yellow_thin_crossing = new SimpleLinePaintBlock("line_yellow_thin_crossing");
-	
+
 	public static Connected1x2PaintBlock yellow_pedestrian = new Connected1x2PaintBlock("yellow_pedestrian");
 	public static Connected1x2PaintBlock yellow_merge_arrow = new Connected1x2PaintBlock("yellow_merge_arrow");
 	public static Connected1x2PaintBlock yellow_give_way = new Connected1x2PaintBlock("yellow_give_way");
-	
+
 	public static JunctionFilterLinePaintBlock yellow_junction_filter_left = new JunctionFilterLinePaintBlock("yellow_junction_filter_left", true);
 	public static JunctionFilterLinePaintBlock yellow_junction_filter_left_thin  = new JunctionFilterLinePaintBlock("yellow_junction_filter_left_thin", true);
 	public static JunctionFilterLinePaintBlock yellow_junction_filter_left_empty = new JunctionFilterLinePaintBlock("yellow_junction_filter_left_empty", true);
 	public static JunctionFilterLinePaintBlock yellow_junction_filter_right = new JunctionFilterLinePaintBlock("yellow_junction_filter_right", false);
 	public static JunctionFilterLinePaintBlock yellow_junction_filter_right_thin  = new JunctionFilterLinePaintBlock("yellow_junction_filter_right_thin", false);
 	public static JunctionFilterLinePaintBlock yellow_junction_filter_right_empty = new JunctionFilterLinePaintBlock("yellow_junction_filter_right_empty", false);
-	
+
 	public static ChevronSideLinePaintBlock yellow_chevron_side_line = new ChevronSideLinePaintBlock("yellow_chevron_side_line");
-	
+
 	public static ChevronPaintBlock yellow_chevron_left_a = new ChevronPaintBlock("yellow_chevron_left_a", ChevronPaintBlock.EnumJunctionConnections.CHEVRON_A, true);
 	public static ChevronPaintBlock yellow_chevron_left_b = new ChevronPaintBlock("yellow_chevron_left_b", ChevronPaintBlock.EnumJunctionConnections.CHEVRON_B, false);
 	public static ChevronPaintBlock yellow_chevron_left_a_thin = new ChevronPaintBlock("yellow_chevron_left_a_thin", ChevronPaintBlock.EnumJunctionConnections.CHEVRON_THIN_A, true);
 	public static ChevronPaintBlock yellow_chevron_left_b_thin = new ChevronPaintBlock("yellow_chevron_left_b_thin", ChevronPaintBlock.EnumJunctionConnections.CHEVRON_THIN_B, false);
-	
+
 	public static ChevronPaintBlock yellow_chevron_right_a = new ChevronPaintBlock("yellow_chevron_right_a", ChevronPaintBlock.EnumJunctionConnections.CHEVRON_A, true);
 	public static ChevronPaintBlock yellow_chevron_right_b = new ChevronPaintBlock("yellow_chevron_right_b", ChevronPaintBlock.EnumJunctionConnections.CHEVRON_B, false);
 	public static ChevronPaintBlock yellow_chevron_right_a_thin = new ChevronPaintBlock("yellow_chevron_right_a_thin", ChevronPaintBlock.EnumJunctionConnections.CHEVRON_THIN_A, true);
 	public static ChevronPaintBlock yellow_chevron_right_b_thin = new ChevronPaintBlock("yellow_chevron_right_b_thin", ChevronPaintBlock.EnumJunctionConnections.CHEVRON_THIN_B, false);
-	
+
 	public static MultiIconPaintBlock yellow_chevron_mid = new MultiIconPaintBlock("yellow_chevron_mid", true);
 	public static Connected1x4PaintBlock yellow_junction_fork_mid = new Connected1x4PaintBlock("yellow_junction_fork_mid", false);
 	public static Connected1x4PaintBlock yellow_junction_fork_mid_thin = new Connected1x4PaintBlock("yellow_junction_fork_mid_thin", false);
 	public static Connected1x4PaintBlock yellow_junction_fork_chevron_mid = new Connected1x4PaintBlock("yellow_junction_fork_chevron_mid", false);
 	public static Connected1x4PaintBlock yellow_junction_fork_chevron_mid_thin = new Connected1x4PaintBlock("yellow_junction_fork_chevron_mid_thin", false);
-		
+
 	public static MultiIconPaintBlock yellow_chevron_mid_left = new MultiIconPaintBlock("yellow_chevron_mid_left", true);
 	public static MultiIconPaintBlock yellow_chevron_mid_right = new MultiIconPaintBlock("yellow_chevron_mid_right", true);
-	
+
 	public static MultiIconPaintBlock yellow_junction_side_line_connection = new MultiIconPaintBlock("yellow_junction_side_line_connection", true);
 	public static MultiIconPaintBlock yellow_junction_side_line_connection_thin = new MultiIconPaintBlock("yellow_junction_side_line_connection_thin", true);
 	public static MultiIconPaintBlock yellow_junction_side_line_connection_thick_thick = new MultiIconPaintBlock("yellow_junction_side_line_connection_thick_thick", true);
 	public static MultiIconPaintBlock yellow_junction_mid_line_connection = new MultiIconPaintBlock("yellow_junction_mid_line_connection", true);
-	
+
 	public static Connected3x1PaintBlock yellow_slow  = new Connected3x1PaintBlock("yellow_slow");
 	public static Connected3x1PaintBlock yellow_stop  = new Connected3x1PaintBlock("yellow_stop");
 	public static Connected3x1PaintBlock yellow_bike  = new Connected3x1PaintBlock("yellow_bike");
@@ -423,7 +404,7 @@ public class FRBlocks {
 	public static Connected3x1PaintBlock yellow_town = new Connected3x1PaintBlock("yellow_town");
 	public static Connected3x1PaintBlock yellow_city = new Connected3x1PaintBlock("yellow_city");
 	public static Connected3x1PaintBlock yellow_ctre = new Connected3x1PaintBlock("yellow_ctre");
-	
+
 	public static LetterPaintBlock paint_letter_yellow_ab = new LetterPaintBlock("paint_letter_yellow_ab");
 	public static LetterPaintBlock paint_letter_yellow_cd = new LetterPaintBlock("paint_letter_yellow_cd");
 	public static LetterPaintBlock paint_letter_yellow_ef = new LetterPaintBlock("paint_letter_yellow_ef");
@@ -444,9 +425,9 @@ public class FRBlocks {
 	public static LetterPaintBlock paint_letter_yellow_89 = new LetterPaintBlock("paint_letter_yellow_89");
 	public static LetterPaintBlock paint_letter_yellow_punct_question_exclamation = new LetterPaintBlock("paint_letter_yellow_punct_question_exclamation");
 	public static LetterPaintBlock paint_letter_yellow_punct_hash_slash = new LetterPaintBlock("paint_letter_yellow_punct_hash_slash");
-	
-	
-	
+
+
+
 	public static LinePaintBlock line_red_straight_full = new LinePaintBlock("line_red_straight_full");
 	public static LinePaintBlock line_red_straight_thick = new LinePaintBlock("line_red_straight_thick");
 	public static LinePaintBlock line_red_straight_double = new LinePaintBlock("line_red_straight_double");
@@ -472,45 +453,45 @@ public class FRBlocks {
 	public static JunctionPaintBlock red_junction_a = new JunctionPaintBlock("red_junction_a");
 	public static JunctionPaintBlock red_junction_b = new JunctionPaintBlock("red_junction_b");
 	public static IconPaintBlock red_chevron = new IconPaintBlock("red_chevron");
-	
+
 	public static Connected1x2PaintBlock red_pedestrian = new Connected1x2PaintBlock("red_pedestrian");
 	public static Connected1x2PaintBlock red_merge_arrow = new Connected1x2PaintBlock("red_merge_arrow");
 	public static Connected1x2PaintBlock red_give_way = new Connected1x2PaintBlock("red_give_way");
-	
+
 	public static JunctionFilterLinePaintBlock red_junction_filter_left = new JunctionFilterLinePaintBlock("red_junction_filter_left", true);
 	public static JunctionFilterLinePaintBlock red_junction_filter_left_thin  = new JunctionFilterLinePaintBlock("red_junction_filter_left_thin", true);
 	public static JunctionFilterLinePaintBlock red_junction_filter_left_empty = new JunctionFilterLinePaintBlock("red_junction_filter_left_empty", true);
 	public static JunctionFilterLinePaintBlock red_junction_filter_right = new JunctionFilterLinePaintBlock("red_junction_filter_right", false);
 	public static JunctionFilterLinePaintBlock red_junction_filter_right_thin  = new JunctionFilterLinePaintBlock("red_junction_filter_right_thin", false);
 	public static JunctionFilterLinePaintBlock red_junction_filter_right_empty = new JunctionFilterLinePaintBlock("red_junction_filter_right_empty", false);
-	
+
 	public static ChevronSideLinePaintBlock red_chevron_side_line = new ChevronSideLinePaintBlock("red_chevron_side_line");
 	public static SimpleLinePaintBlock line_red_thin_crossing = new SimpleLinePaintBlock("line_red_thin_crossing");
-	
+
 	public static ChevronPaintBlock red_chevron_left_a = new ChevronPaintBlock("red_chevron_left_a", ChevronPaintBlock.EnumJunctionConnections.CHEVRON_A, true);
 	public static ChevronPaintBlock red_chevron_left_b = new ChevronPaintBlock("red_chevron_left_b", ChevronPaintBlock.EnumJunctionConnections.CHEVRON_B, false);
 	public static ChevronPaintBlock red_chevron_left_a_thin = new ChevronPaintBlock("red_chevron_left_a_thin", ChevronPaintBlock.EnumJunctionConnections.CHEVRON_THIN_A, true);
 	public static ChevronPaintBlock red_chevron_left_b_thin = new ChevronPaintBlock("red_chevron_left_b_thin", ChevronPaintBlock.EnumJunctionConnections.CHEVRON_THIN_B, false);
-	
+
 	public static ChevronPaintBlock red_chevron_right_a = new ChevronPaintBlock("red_chevron_right_a", ChevronPaintBlock.EnumJunctionConnections.CHEVRON_A, true);
 	public static ChevronPaintBlock red_chevron_right_b = new ChevronPaintBlock("red_chevron_right_b", ChevronPaintBlock.EnumJunctionConnections.CHEVRON_B, false);
 	public static ChevronPaintBlock red_chevron_right_a_thin = new ChevronPaintBlock("red_chevron_right_a_thin", ChevronPaintBlock.EnumJunctionConnections.CHEVRON_THIN_A, true);
 	public static ChevronPaintBlock red_chevron_right_b_thin = new ChevronPaintBlock("red_chevron_right_b_thin", ChevronPaintBlock.EnumJunctionConnections.CHEVRON_THIN_B, false);
-	
+
 	public static MultiIconPaintBlock red_chevron_mid = new MultiIconPaintBlock("red_chevron_mid", true);
 	public static Connected1x4PaintBlock red_junction_fork_mid = new Connected1x4PaintBlock("red_junction_fork_mid", false);
 	public static Connected1x4PaintBlock red_junction_fork_mid_thin = new Connected1x4PaintBlock("red_junction_fork_mid_thin", false);
 	public static Connected1x4PaintBlock red_junction_fork_chevron_mid = new Connected1x4PaintBlock("red_junction_fork_chevron_mid", false);
 	public static Connected1x4PaintBlock red_junction_fork_chevron_mid_thin = new Connected1x4PaintBlock("red_junction_fork_chevron_mid_thin", false);
-		
+
 	public static MultiIconPaintBlock red_chevron_mid_left = new MultiIconPaintBlock("red_chevron_mid_left", true);
 	public static MultiIconPaintBlock red_chevron_mid_right = new MultiIconPaintBlock("red_chevron_mid_right", true);
-	
+
 	public static MultiIconPaintBlock red_junction_side_line_connection = new MultiIconPaintBlock("red_junction_side_line_connection", true);
 	public static MultiIconPaintBlock red_junction_side_line_connection_thin = new MultiIconPaintBlock("red_junction_side_line_connection_thin", true);
 	public static MultiIconPaintBlock red_junction_side_line_connection_thick_thick = new MultiIconPaintBlock("red_junction_side_line_connection_thick_thick", true);
 	public static MultiIconPaintBlock red_junction_mid_line_connection = new MultiIconPaintBlock("red_junction_mid_line_connection", true);
-	
+
 	public static Connected3x1PaintBlock red_slow  = new Connected3x1PaintBlock("red_slow");
 	public static Connected3x1PaintBlock red_stop  = new Connected3x1PaintBlock("red_stop");
 	public static Connected3x1PaintBlock red_bike  = new Connected3x1PaintBlock("red_bike");
@@ -529,7 +510,7 @@ public class FRBlocks {
 	public static Connected3x1PaintBlock red_town = new Connected3x1PaintBlock("red_town");
 	public static Connected3x1PaintBlock red_city = new Connected3x1PaintBlock("red_city");
 	public static Connected3x1PaintBlock red_ctre = new Connected3x1PaintBlock("red_ctre");
-	
+
 	public static LetterPaintBlock paint_letter_red_ab = new LetterPaintBlock("paint_letter_red_ab");
 	public static LetterPaintBlock paint_letter_red_cd = new LetterPaintBlock("paint_letter_red_cd");
 	public static LetterPaintBlock paint_letter_red_ef = new LetterPaintBlock("paint_letter_red_ef");
@@ -550,9 +531,9 @@ public class FRBlocks {
 	public static LetterPaintBlock paint_letter_red_89 = new LetterPaintBlock("paint_letter_red_89");
 	public static LetterPaintBlock paint_letter_red_punct_question_exclamation = new LetterPaintBlock("paint_letter_red_punct_question_exclamation");
 	public static LetterPaintBlock paint_letter_red_punct_hash_slash = new LetterPaintBlock("paint_letter_red_punct_hash_slash");
-	
+
 	public static BlockRoadSnow road_snow = new BlockRoadSnow("road_snow");
-	
+
 	public static void registerTileEntities() {
 		GameRegistry.registerTileEntity(PaintFillerEntity.class, new ResourceLocation(FurenikusRoads.MODID, "paint_filler_entity"));
 		GameRegistry.registerTileEntity(TarDistillerEntity.class, new ResourceLocation(FurenikusRoads.MODID, "tar_distiller_entity"));
@@ -562,7 +543,7 @@ public class FRBlocks {
 		GameRegistry.registerTileEntity(PaintOvenEntity.class, new ResourceLocation(FurenikusRoads.MODID, "paint_oven_entity"));
 		GameRegistry.registerTileEntity(CompactorEntity.class, new ResourceLocation(FurenikusRoads.MODID, "compactor_entity"));
 		GameRegistry.registerTileEntity(FabricatorEntity.class, new ResourceLocation(FurenikusRoads.MODID, "fabricator_entity"));
-		
+
 		GameRegistry.registerTileEntity(PaintFillerElectricEntity.class, new ResourceLocation(FurenikusRoads.MODID, "paint_filler_electric_entity"));
 		GameRegistry.registerTileEntity(TarDistillerElectricEntity.class, new ResourceLocation(FurenikusRoads.MODID, "tar_distiller_electric_entity"));
 		GameRegistry.registerTileEntity(RoadFactoryElectricEntity.class, new ResourceLocation(FurenikusRoads.MODID, "road_factory_electric_entity"));
@@ -571,7 +552,7 @@ public class FRBlocks {
 		GameRegistry.registerTileEntity(PaintOvenElectricEntity.class, new ResourceLocation(FurenikusRoads.MODID, "paint_oven_electric_entity"));
 		GameRegistry.registerTileEntity(CompactorElectricEntity.class, new ResourceLocation(FurenikusRoads.MODID, "compactor_electric_entity"));
 		GameRegistry.registerTileEntity(FabricatorElectricEntity.class, new ResourceLocation(FurenikusRoads.MODID, "fabricator_electric_entity"));
-		
+
 		GameRegistry.registerTileEntity(PaintFillerHopperEntity.class, new ResourceLocation(FurenikusRoads.MODID, "paint_filler_hopper_entity"));
 	}
 
@@ -590,18 +571,18 @@ public class FRBlocks {
 		roadBlockList.add(road_block_green);
 		roadBlockList.add(road_block_muddy);
 		roadBlockList.add(road_block_muddy_dried);
-		
+
 		roadBlockList.add(road_block_stone);
 		roadBlockList.add(road_block_grass);
 		roadBlockList.add(road_block_dirt);
 		roadBlockList.add(road_block_gravel);
 		roadBlockList.add(road_block_sand);
-		
+
 		roadBlockList.add(sidewalk);
 		roadBlockList.add(sidewalk_clean);
 		roadBlockList.add(sidewalk_dark);
 		roadBlockList.add(sidewalk_tan);
-		
+
 		paintBlockList.add(line_white_straight_full);
 		paintBlockList.add(line_white_straight_thick);
 		paintBlockList.add(line_white_straight_double);
@@ -614,7 +595,7 @@ public class FRBlocks {
 		paintBlockList.add(line_red_straight_thick);
 		paintBlockList.add(line_red_straight_double);
 		paintBlockList.add(line_red_straight_double_thick);
-		
+
 		paintBlockList.add(line_white_side_double);
 		paintBlockList.add(line_white_side_double_thick);
 		paintBlockList.add(line_white_side_single);
@@ -627,7 +608,7 @@ public class FRBlocks {
 		paintBlockList.add(line_red_side_double_thick);
 		paintBlockList.add(line_red_side_single);
 		paintBlockList.add(line_red_side_single_thick);
-		
+
 		paintBlockList.add(line_white_far_side);
 		paintBlockList.add(line_white_far_side_thick);
 		paintBlockList.add(line_yellow_far_side);
@@ -641,33 +622,33 @@ public class FRBlocks {
 		paintBlockList.add(line_white_filter_lane);
 		paintBlockList.add(line_white_side_short);
 		paintBlockList.add(line_white_thin_crossing);
-		
+
 		paintBlockList.add(line_yellow_middle_half_double);
 		paintBlockList.add(line_yellow_middle_dash_double);
 		paintBlockList.add(line_yellow_middle_short);
 		paintBlockList.add(line_yellow_filter_lane);
 		paintBlockList.add(line_yellow_side_short);
 		paintBlockList.add(line_yellow_thin_crossing);
-		
+
 		paintBlockList.add(line_red_middle_half_double);
 		paintBlockList.add(line_red_middle_dash_double);
 		paintBlockList.add(line_red_middle_short);
 		paintBlockList.add(line_red_filter_lane);
 		paintBlockList.add(line_red_side_short);
 		paintBlockList.add(line_red_thin_crossing);
-	
+
 		paintBlockList.add(white_wheelchair_icon);
 		paintBlockList.add(white_chevron);
 		paintBlockList.add(white_pedestrian);
 		paintBlockList.add(white_merge_arrow);
 		paintBlockList.add(white_give_way);
-		
+
 		paintBlockList.add(yellow_wheelchair_icon);
 		paintBlockList.add(yellow_chevron);
 		paintBlockList.add(yellow_pedestrian);
 		paintBlockList.add(yellow_merge_arrow);
 		paintBlockList.add(yellow_give_way);
-		
+
 		paintBlockList.add(red_wheelchair_icon);
 		paintBlockList.add(red_chevron);
 		paintBlockList.add(red_pedestrian);
@@ -677,107 +658,107 @@ public class FRBlocks {
 		paintBlockList.add(white_junction_filter_left);
 		paintBlockList.add(white_junction_filter_left_thin);
 		paintBlockList.add(white_junction_filter_left_empty);
-		
+
 		paintBlockList.add(white_junction_filter_right);
 		paintBlockList.add(white_junction_filter_right_thin);
 		paintBlockList.add(white_junction_filter_right_empty);
-		
+
 		paintBlockList.add(white_junction_fork_mid);
 		paintBlockList.add(white_junction_fork_mid_thin);
 		paintBlockList.add(white_junction_fork_chevron_mid);
 		paintBlockList.add(white_junction_fork_chevron_mid_thin);
-		
+
 		paintBlockList.add(white_chevron_left_a);
 		paintBlockList.add(white_chevron_left_b);
 		paintBlockList.add(white_chevron_left_a_thin);
 		paintBlockList.add(white_chevron_left_b_thin);
-		
+
 		paintBlockList.add(white_chevron_right_a);
 		paintBlockList.add(white_chevron_right_b);
 		paintBlockList.add(white_chevron_right_a_thin);
 		paintBlockList.add(white_chevron_right_b_thin);
-		
+
 		paintBlockList.add(white_junction_side_line_connection);
 		paintBlockList.add(white_junction_side_line_connection_thin);
 		paintBlockList.add(white_junction_side_line_connection_thick_thick);
 		paintBlockList.add(white_junction_mid_line_connection);
-		
+
 		paintBlockList.add(white_chevron_mid);
 		paintBlockList.add(white_chevron_mid_left);
 		paintBlockList.add(white_chevron_mid_right);
-		
+
 		paintBlockList.add(white_chevron_side_line);
-		
-		
+
+
 		paintBlockList.add(yellow_junction_filter_left);
 		paintBlockList.add(yellow_junction_filter_left_thin);
 		paintBlockList.add(yellow_junction_filter_left_empty);
-		
+
 		paintBlockList.add(yellow_junction_filter_right);
 		paintBlockList.add(yellow_junction_filter_right_thin);
 		paintBlockList.add(yellow_junction_filter_right_empty);
-		
+
 		paintBlockList.add(yellow_junction_fork_mid);
 		paintBlockList.add(yellow_junction_fork_mid_thin);
 		paintBlockList.add(yellow_junction_fork_chevron_mid);
 		paintBlockList.add(yellow_junction_fork_chevron_mid_thin);
-		
+
 		paintBlockList.add(yellow_chevron_left_a);
 		paintBlockList.add(yellow_chevron_left_b);
 		paintBlockList.add(yellow_chevron_left_a_thin);
 		paintBlockList.add(yellow_chevron_left_b_thin);
-		
+
 		paintBlockList.add(yellow_chevron_right_a);
 		paintBlockList.add(yellow_chevron_right_b);
 		paintBlockList.add(yellow_chevron_right_a_thin);
 		paintBlockList.add(yellow_chevron_right_b_thin);
-		
+
 		paintBlockList.add(yellow_junction_side_line_connection);
 		paintBlockList.add(yellow_junction_side_line_connection_thin);
 		paintBlockList.add(yellow_junction_side_line_connection_thick_thick);
 		paintBlockList.add(yellow_junction_mid_line_connection);
-		
+
 		paintBlockList.add(yellow_chevron_mid);
 		paintBlockList.add(yellow_chevron_mid_left);
 		paintBlockList.add(yellow_chevron_mid_right);
-		
+
 		paintBlockList.add(yellow_chevron_side_line);
-		
-		
+
+
 		paintBlockList.add(red_junction_filter_left);
 		paintBlockList.add(red_junction_filter_left_thin);
 		paintBlockList.add(red_junction_filter_left_empty);
-		
+
 		paintBlockList.add(red_junction_filter_right);
 		paintBlockList.add(red_junction_filter_right_thin);
 		paintBlockList.add(red_junction_filter_right_empty);
-		
+
 		paintBlockList.add(red_junction_fork_mid);
 		paintBlockList.add(red_junction_fork_mid_thin);
 		paintBlockList.add(red_junction_fork_chevron_mid);
 		paintBlockList.add(red_junction_fork_chevron_mid_thin);
-		
+
 		paintBlockList.add(red_chevron_left_a);
 		paintBlockList.add(red_chevron_left_b);
 		paintBlockList.add(red_chevron_left_a_thin);
 		paintBlockList.add(red_chevron_left_b_thin);
-		
+
 		paintBlockList.add(red_chevron_right_a);
 		paintBlockList.add(red_chevron_right_b);
 		paintBlockList.add(red_chevron_right_a_thin);
 		paintBlockList.add(red_chevron_right_b_thin);
-		
+
 		paintBlockList.add(red_junction_side_line_connection);
 		paintBlockList.add(red_junction_side_line_connection_thin);
 		paintBlockList.add(red_junction_side_line_connection_thick_thick);
 		paintBlockList.add(red_junction_mid_line_connection);
-		
+
 		paintBlockList.add(red_chevron_mid);
 		paintBlockList.add(red_chevron_mid_left);
 		paintBlockList.add(red_chevron_mid_right);
-		
+
 		paintBlockList.add(red_chevron_side_line);
-		
+
 
 		paintBlockList.add(white_slow);
 		paintBlockList.add(white_stop);
@@ -797,7 +778,7 @@ public class FRBlocks {
 		paintBlockList.add(white_town);
 		paintBlockList.add(white_city);
 		paintBlockList.add(white_ctre);
-		
+
 		paintBlockList.add(yellow_slow);
 		paintBlockList.add(yellow_stop);
 		paintBlockList.add(yellow_bike);
@@ -816,7 +797,7 @@ public class FRBlocks {
 		paintBlockList.add(yellow_town);
 		paintBlockList.add(yellow_city);
 		paintBlockList.add(yellow_ctre);
-		
+
 		paintBlockList.add(red_slow);
 		paintBlockList.add(red_stop);
 		paintBlockList.add(red_bike);
@@ -835,7 +816,7 @@ public class FRBlocks {
 		paintBlockList.add(red_town);
 		paintBlockList.add(red_city);
 		paintBlockList.add(red_ctre);
-		
+
 		paintBlockList.add(paint_letter_white_ab);
 		paintBlockList.add(paint_letter_white_cd);
 		paintBlockList.add(paint_letter_white_ef);
@@ -856,7 +837,7 @@ public class FRBlocks {
 		paintBlockList.add(paint_letter_white_89);
 		paintBlockList.add(paint_letter_white_punct_question_exclamation);
 		paintBlockList.add(paint_letter_white_punct_hash_slash);
-		
+
 		paintBlockList.add(paint_letter_yellow_ab);
 		paintBlockList.add(paint_letter_yellow_cd);
 		paintBlockList.add(paint_letter_yellow_ef);
@@ -877,7 +858,7 @@ public class FRBlocks {
 		paintBlockList.add(paint_letter_yellow_89);
 		paintBlockList.add(paint_letter_yellow_punct_question_exclamation);
 		paintBlockList.add(paint_letter_yellow_punct_hash_slash);
-		
+
 		paintBlockList.add(paint_letter_red_ab);
 		paintBlockList.add(paint_letter_red_cd);
 		paintBlockList.add(paint_letter_red_ef);
@@ -907,7 +888,7 @@ public class FRBlocks {
 		paintBlockList.add(white_arrow_diagonal);
 		paintBlockList.add(white_junction_a);
 		paintBlockList.add(white_junction_b);
-		
+
 		paintBlockList.add(hatch_box_yellow);
 		paintBlockList.add(line_yellow_crossing_diagonal);
 		paintBlockList.add(yellow_crossing_paint);
@@ -916,7 +897,7 @@ public class FRBlocks {
 		paintBlockList.add(yellow_arrow_diagonal);
 		paintBlockList.add(yellow_junction_a);
 		paintBlockList.add(yellow_junction_b);
-		
+
 		paintBlockList.add(hatch_box_red);
 		paintBlockList.add(line_red_crossing_diagonal);
 		paintBlockList.add(red_crossing_paint);
@@ -925,7 +906,7 @@ public class FRBlocks {
 		paintBlockList.add(red_arrow_diagonal);
 		paintBlockList.add(red_junction_a);
 		paintBlockList.add(red_junction_b);
-		
+
 		catsEyeList.add(cats_eye_white);
 		catsEyeList.add(cats_eye_yellow);
 		catsEyeList.add(cats_eye_red);
@@ -936,7 +917,7 @@ public class FRBlocks {
 		catsEyeList.add(cats_eye_white_yellow);
 		catsEyeList.add(cats_eye_white_green);
 		catsEyeList.add(cats_eye_yellow_red);
-		
+
 		catsEyeList.add(cats_eye_white_double);
 		catsEyeList.add(cats_eye_yellow_double);
 		catsEyeList.add(cats_eye_red_double);
@@ -947,18 +928,18 @@ public class FRBlocks {
 		catsEyeList.add(cats_eye_white_yellow_double);
 		catsEyeList.add(cats_eye_white_green_double);
 		catsEyeList.add(cats_eye_yellow_red_double);
-		
+
 		genericList.add(post_small_vertical);
 		genericList.add(post_small_horizontal);
 		genericList.add(post_medium_vertical);
 		genericList.add(post_medium_horizontal);
 		genericList.add(post_large_vertical);
 		genericList.add(post_large_horizontal);
-		
+
 		genericList.add(post_small_vertical_2);
 		genericList.add(post_medium_vertical_2);
 		genericList.add(post_large_vertical_2);
-		
+
 		genericList.add(street_light_1);
 		genericList.add(street_light_2);
 		genericList.add(street_light_3);
@@ -966,12 +947,12 @@ public class FRBlocks {
 		genericList.add(street_light_5);
 		genericList.add(street_light_6);
 		genericList.add(barrier_end);
-		
+
 		genericList.add(barrier_standard_mid);
 		genericList.add(barrier_tall_mid);
 		genericList.add(barrier_concrete_1_mid);
 		genericList.add(barrier_concrete_2_mid);
-		
+
 		genericList.add(barrier_bars_mid);
 		genericList.add(barrier_bars_mid_2);
 		genericList.add(barrier_bars_mid_3);
@@ -982,12 +963,12 @@ public class FRBlocks {
 		genericList.add(barrier_wall_pole_mid_concrete_1);
 		genericList.add(barrier_wall_pole_mid_concrete_2);
 		genericList.add(barrier_low_mid);
-		
+
 		genericList.add(barrier_standard_edge);
 		genericList.add(barrier_tall_edge);
 		genericList.add(barrier_concrete_edge_1);
 		genericList.add(barrier_concrete_edge_2);
-		
+
 		genericList.add(barrier_bars_edge);
 		genericList.add(barrier_bars_edge_2);
 		genericList.add(barrier_bars_edge_3);
@@ -998,7 +979,7 @@ public class FRBlocks {
 		genericList.add(barrier_wall_pole_edge_concrete_1);
 		genericList.add(barrier_wall_pole_edge_concrete_2);
 		genericList.add(barrier_low_edge);
-		
+
 		genericList.add(barrier_bars_edge_double);
 		genericList.add(barrier_bars_edge_double_2);
 		genericList.add(barrier_bars_edge_double_3);
@@ -1010,71 +991,71 @@ public class FRBlocks {
 		genericList.add(barrier_wall_pole_edge_concrete_2_double);
 		genericList.add(barrier_standard_edge_double);
 		genericList.add(barrier_tall_edge_double);
-		
+
 		genericList.add(bollard_1);
 		genericList.add(bollard_2);
 		genericList.add(bollard_3);
 		genericList.add(bollard_folding_smooth_metal);
 		genericList.add(bollard_folding_black);
 		genericList.add(bollard_folding_yellow);
-		
+
 		genericList.add(wheel_stop);
 		genericList.add(speed_bump);
-		
+
 		genericList.add(fake_light_source);
 
 		registry.registerAll(
-			paint_filler,
-			tar_distiller,
-			road_factory,
-			tarmac_cutter,
-			crusher,
-			paint_oven,
-			compactor,
-			fabricator,
-			
-			paint_filler_electric,
-			tar_distiller_electric,
-			road_factory_electric,
-			tarmac_cutter_electric,
-			crusher_electric,
-			paint_oven_electric,
-			compactor_electric,
-			fabricator_electric,
-			
-			paint_filler_hopper,
-			
-			tar_fluid,
-			paint_white_fluid,
-			paint_yellow_fluid,
-			paint_red_fluid,
-			
-			kerb_standard,
-			
-			street_block_a,
-			street_block_b,
-			generic_blocks,
-			
-			tactile_crossing_bumps,
-			manhole_cover_round,
-			manhole_cover_square,
-			drain_cover_1,
-			drain_cover_2,
-			road_snow
-		);
-		
+				paint_filler,
+				tar_distiller,
+				road_factory,
+				tarmac_cutter,
+				crusher,
+				paint_oven,
+				compactor,
+				fabricator,
+
+				paint_filler_electric,
+				tar_distiller_electric,
+				road_factory_electric,
+				tarmac_cutter_electric,
+				crusher_electric,
+				paint_oven_electric,
+				compactor_electric,
+				fabricator_electric,
+
+				paint_filler_hopper,
+
+				tar_fluid,
+				paint_white_fluid,
+				paint_yellow_fluid,
+				paint_red_fluid,
+
+				kerb_standard,
+
+				street_block_a,
+				street_block_b,
+				generic_blocks,
+
+				tactile_crossing_bumps,
+				manhole_cover_round,
+				manhole_cover_square,
+				drain_cover_1,
+				drain_cover_2,
+				road_snow
+				);
+
 		for (int i = 0; i < roadBlockList.size(); i++)  { registry.register(roadBlockList.get(i)); }
 		for (int i = 0; i < paintBlockList.size(); i++)  { registry.register(paintBlockList.get(i)); }
 		for (int i = 0; i < genericList.size(); i++)  { registry.register(genericList.get(i)); }
 		for (int i = 0; i < catsEyeList.size(); i++)  { registry.register(catsEyeList.get(i)); }
 	}
-	
+
 	public static void registerItemBlocks(IForgeRegistry<Item> registry) {
 		for (int i = 0; i < roadBlockList.size(); i++)  { registry.register(new RoadItemBlock(roadBlockList.get(i)).setRegistryName(roadBlockList.get(i).getRegistryName())); }
 		for (int i = 0; i < paintBlockList.size(); i++)  { registry.register(new RoadItemBlock(paintBlockList.get(i)).setRegistryName(paintBlockList.get(i).getRegistryName())); }
 		for (int i = 0; i < genericList.size(); i++)  { registry.register(new RoadItemBlock(genericList.get(i)).setRegistryName(genericList.get(i).getRegistryName())); }
 		for (int i = 0; i < catsEyeList.size(); i++)  { registry.register(new RoadItemBlock(catsEyeList.get(i)).setRegistryName(catsEyeList.get(i).getRegistryName())); }
-		
+
 		registry.register(new RoadItemBlock(paint_filler).setRegistryName(paint_filler.getRegistryName()));
 		registry.register(new RoadItemBlock(tar_distiller).setRegistryName(tar_distiller.getRegistryName()));
 		registry.register(new RoadItemBlock(road_factory).setRegistryName(road_factory.getRegistryName()));
@@ -1083,7 +1064,7 @@ public class FRBlocks {
 		registry.register(new RoadItemBlock(paint_oven).setRegistryName(paint_oven.getRegistryName()));
 		registry.register(new RoadItemBlock(compactor).setRegistryName(compactor.getRegistryName()));
 		registry.register(new RoadItemBlock(fabricator).setRegistryName(fabricator.getRegistryName()));
-		
+
 		registry.register(new RoadItemBlock(paint_filler_electric).setRegistryName(paint_filler_electric.getRegistryName()));
 		registry.register(new RoadItemBlock(tar_distiller_electric).setRegistryName(tar_distiller_electric.getRegistryName()));
 		registry.register(new RoadItemBlock(road_factory_electric).setRegistryName(road_factory_electric.getRegistryName()));
@@ -1092,20 +1073,20 @@ public class FRBlocks {
 		registry.register(new RoadItemBlock(paint_oven_electric).setRegistryName(paint_oven_electric.getRegistryName()));
 		registry.register(new RoadItemBlock(compactor_electric).setRegistryName(compactor_electric.getRegistryName()));
 		registry.register(new RoadItemBlock(fabricator_electric).setRegistryName(fabricator_electric.getRegistryName()));
-		
+
 		registry.register(new RoadItemBlock(paint_filler_hopper).setRegistryName(paint_filler_hopper.getRegistryName()));
-		
+
 		registry.register(new RoadItemBlock(tar_fluid).setRegistryName(tar_fluid.getRegistryName()));
 		registry.register(new RoadItemBlock(paint_white_fluid).setRegistryName(paint_white_fluid.getRegistryName()));
 		registry.register(new RoadItemBlock(paint_yellow_fluid).setRegistryName(paint_yellow_fluid.getRegistryName()));
 		registry.register(new RoadItemBlock(paint_red_fluid).setRegistryName(paint_red_fluid.getRegistryName()));
-		
+
 		registry.register(new RoadItemBlock(kerb_standard).setRegistryName(kerb_standard.getRegistryName()));
-		
+
 		registry.register(new RoadItemBlock(street_block_a).setRegistryName(street_block_a.getRegistryName()));
 		registry.register(new RoadItemBlock(street_block_b).setRegistryName(street_block_b.getRegistryName()));
 		registry.register(new RoadItemBlock(generic_blocks).setRegistryName(generic_blocks.getRegistryName()));
-		
+
 		registry.register(new RoadItemBlock(tactile_crossing_bumps).setRegistryName(tactile_crossing_bumps.getRegistryName()));
 		registry.register(new RoadItemBlock(manhole_cover_round).setRegistryName(manhole_cover_round.getRegistryName()));
 		registry.register(new RoadItemBlock(manhole_cover_square).setRegistryName(manhole_cover_square.getRegistryName()));
@@ -1113,13 +1094,13 @@ public class FRBlocks {
 		registry.register(new RoadItemBlock(drain_cover_2).setRegistryName(drain_cover_2.getRegistryName()));
 		registry.register(new RoadItemBlock(road_snow).setRegistryName(road_snow.getRegistryName()));
 	}
-	
+
 	public static void registerModels() {
 		for (int i = 0; i < roadBlockList.size(); i++)  { roadBlockList.get(i).initModel(); }
 		for (int i = 0; i < paintBlockList.size(); i++)  { paintBlockList.get(i).initModel(); }
 		for (int i = 0; i < genericList.size(); i++)  { genericList.get(i).initModel(); }
 		for (int i = 0; i < catsEyeList.size(); i++)  { catsEyeList.get(i).initModel(); }
-		
+
 		paint_filler.initModel();
 		tar_distiller.initModel();
 		road_factory.initModel();
@@ -1128,7 +1109,7 @@ public class FRBlocks {
 		paint_oven.initModel();
 		compactor.initModel();
 		fabricator.initModel();
-		
+
 		paint_filler_electric.initModel();
 		tar_distiller_electric.initModel();
 		road_factory_electric.initModel();
@@ -1137,20 +1118,20 @@ public class FRBlocks {
 		paint_oven_electric.initModel();
 		compactor_electric.initModel();
 		fabricator_electric.initModel();
-		
+
 		paint_filler_hopper.initModel();
-		
+
 		registerBlockModel(tar_fluid);
 		registerBlockModel(paint_white_fluid);
 		registerBlockModel(paint_yellow_fluid);
 		registerBlockModel(paint_red_fluid);
-		
+
 		kerb_standard.initModel();
-		
+
 		street_block_a.initModel();
 		street_block_b.initModel();
 		generic_blocks.initModel();
-		
+
 		tactile_crossing_bumps.initModel();
 		manhole_cover_round.initModel();
 		manhole_cover_square.initModel();
@@ -1158,12 +1139,12 @@ public class FRBlocks {
 		drain_cover_2.initModel();
 		road_snow.initModel();
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	public static void registerBlockModel(Block block) {
 		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation(block.getRegistryName(), "inventory"));
 	}
-	
+
 	//We only register white variants. Yellow and red can be taken from the white.
 	public static void registerPaintGunEntries() {
 		PaintGunItemRegistry.registerLine(line_white_straight_full);
@@ -1174,12 +1155,12 @@ public class FRBlocks {
 		PaintGunItemRegistry.registerLine(line_white_straight_double, 2);
 		PaintGunItemRegistry.registerLine(line_white_straight_double_thick);
 		PaintGunItemRegistry.registerLine(line_white_straight_double_thick, 2);
-		
+
 		PaintGunItemRegistry.registerLine(line_white_side_double);
 		PaintGunItemRegistry.registerLine(line_white_side_double_thick);
 		PaintGunItemRegistry.registerLine(line_white_side_single);
 		PaintGunItemRegistry.registerLine(line_white_side_single_thick);
-		
+
 		PaintGunItemRegistry.registerLine(line_white_far_side);
 		PaintGunItemRegistry.registerLine(line_white_far_side_thick);
 
@@ -1188,21 +1169,21 @@ public class FRBlocks {
 		PaintGunItemRegistry.registerLine(line_white_middle_short);
 		PaintGunItemRegistry.registerLine(line_white_filter_lane);
 		PaintGunItemRegistry.registerLine(line_white_side_short);
-		
+
 		//-----------------------------------------------------
-		
+
 		PaintGunItemRegistry.registerIcons(white_wheelchair_icon);
 		PaintGunItemRegistry.registerIcons(white_chevron);
 		PaintGunItemRegistry.registerIcons(white_pedestrian);
 		PaintGunItemRegistry.registerIcons(white_merge_arrow);
 		PaintGunItemRegistry.registerIcons(white_give_way);
-		
+
 		PaintGunItemRegistry.registerIcons(white_arrow_line);
 		PaintGunItemRegistry.registerIcons(white_arrow);
 		PaintGunItemRegistry.registerIcons(white_arrow, 4);
 		PaintGunItemRegistry.registerIcons(white_arrow_diagonal, 4);
 		PaintGunItemRegistry.registerIcons(white_arrow_diagonal);
-		
+
 		PaintGunItemRegistry.registerIcons(white_crossing_paint);
 		PaintGunItemRegistry.registerIcons(line_white_crossing_diagonal);
 
@@ -1212,13 +1193,13 @@ public class FRBlocks {
 		PaintGunItemRegistry.registerIcons(white_junction_b, 0);
 		PaintGunItemRegistry.registerIcons(white_junction_b, 8);
 		PaintGunItemRegistry.registerIcons(white_junction_b, 4);
-		
+
 		PaintGunItemRegistry.registerIcons(hatch_box_white);
-		
+
 		PaintGunItemRegistry.registerIcons(line_white_thin_crossing);
-		
+
 		//-----------------------------------------------------
-		
+
 		PaintGunItemRegistry.registerLetters(paint_letter_white_ab);
 		PaintGunItemRegistry.registerLetters(paint_letter_white_cd);
 		PaintGunItemRegistry.registerLetters(paint_letter_white_ef);
@@ -1241,7 +1222,7 @@ public class FRBlocks {
 		PaintGunItemRegistry.registerLetters(paint_letter_white_punct_hash_slash);
 
 		//-----------------------------------------------------
-		
+
 		PaintGunItemRegistry.registerText(white_slow);
 		PaintGunItemRegistry.registerText(white_stop);
 		PaintGunItemRegistry.registerText(white_bike);
@@ -1260,7 +1241,7 @@ public class FRBlocks {
 		PaintGunItemRegistry.registerText(white_city);
 		PaintGunItemRegistry.registerText(white_ctre);
 		PaintGunItemRegistry.registerText(white_bike_icon);
-		
+
 		PaintGunItemRegistry.registerText(white_slow, 4);
 		PaintGunItemRegistry.registerText(white_stop, 4);
 		PaintGunItemRegistry.registerText(white_bike, 4);
@@ -1279,55 +1260,55 @@ public class FRBlocks {
 		PaintGunItemRegistry.registerText(white_city, 4);
 		PaintGunItemRegistry.registerText(white_ctre, 4);
 		PaintGunItemRegistry.registerText(white_bike_icon, 4);
-		
+
 		//-----------------------------------------------------
-		
+
 		PaintGunItemRegistry.registerJunction(white_chevron_left_a);
 		PaintGunItemRegistry.registerJunction(white_chevron_mid);
 		PaintGunItemRegistry.registerJunction(white_chevron_right_a);
 		PaintGunItemRegistry.registerJunction(white_chevron_left_a_thin);
 		PaintGunItemRegistry.registerJunction(white_chevron_mid, 8);
 		PaintGunItemRegistry.registerJunction(white_chevron_right_a_thin);
-		
+
 		PaintGunItemRegistry.registerJunction(white_junction_filter_left);
 		PaintGunItemRegistry.registerJunction(white_junction_filter_right);
 		PaintGunItemRegistry.registerJunction(white_junction_filter_left_thin);
 		PaintGunItemRegistry.registerJunction(white_junction_filter_right_thin);
 		PaintGunItemRegistry.registerJunction(white_junction_filter_left_empty);
 		PaintGunItemRegistry.registerJunction(white_junction_filter_right_empty);
-		
+
 		PaintGunItemRegistry.registerJunction(white_chevron_mid_right);
 		PaintGunItemRegistry.registerJunction(white_chevron_mid_left);
 		PaintGunItemRegistry.registerJunction(white_chevron_mid_right, 8);
 		PaintGunItemRegistry.registerJunction(white_chevron_mid_left, 8);
-		
+
 		PaintGunItemRegistry.registerJunction(white_chevron_side_line);
-		
+
 		PaintGunItemRegistry.registerJunction(white_junction_fork_mid);
 		PaintGunItemRegistry.registerJunction(white_junction_fork_mid_thin);
 		PaintGunItemRegistry.registerJunction(white_junction_fork_chevron_mid);
 		PaintGunItemRegistry.registerJunction(white_junction_fork_chevron_mid_thin);
-		
+
 		PaintGunItemRegistry.registerJunction(white_junction_side_line_connection, 12);
 		PaintGunItemRegistry.registerJunction(white_junction_side_line_connection, 8);
 		PaintGunItemRegistry.registerJunction(white_junction_side_line_connection, 0);
 		PaintGunItemRegistry.registerJunction(white_junction_side_line_connection, 4);
-		
+
 		PaintGunItemRegistry.registerJunction(white_junction_side_line_connection_thin, 4);
 		PaintGunItemRegistry.registerJunction(white_junction_side_line_connection_thin, 12);
 		PaintGunItemRegistry.registerJunction(white_junction_side_line_connection_thin, 0);
 		PaintGunItemRegistry.registerJunction(white_junction_side_line_connection_thin, 8);
-		
+
 		PaintGunItemRegistry.registerJunction(white_junction_side_line_connection_thick_thick, 0);
 		PaintGunItemRegistry.registerJunction(white_junction_side_line_connection_thick_thick, 4);
 		PaintGunItemRegistry.registerJunction(white_junction_side_line_connection_thick_thick, 8);
 		PaintGunItemRegistry.registerJunction(white_junction_side_line_connection_thick_thick, 12);
-		
+
 		PaintGunItemRegistry.registerJunction(white_junction_mid_line_connection, 0);
 		PaintGunItemRegistry.registerJunction(white_junction_mid_line_connection, 4);
 		PaintGunItemRegistry.registerJunction(white_junction_mid_line_connection, 8);
 		PaintGunItemRegistry.registerJunction(white_junction_mid_line_connection, 12);
-		
+
 		FurenikusRoads.logger.info("REGISTRATION COMPLETE! " + PaintGunItemRegistry.lines.size() + " lines, " + PaintGunItemRegistry.icons.size() + " icons, " + PaintGunItemRegistry.letters.size() + " letters, " + PaintGunItemRegistry.text.size() + " texts, " + PaintGunItemRegistry.junction.size() + " junctions.");
 	}
 }

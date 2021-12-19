@@ -38,7 +38,7 @@ import net.minecraftforge.fml.relauncher.Side;
 public class FurenikusRoads {
 	
 	public static final String MODID = "furenikusroads";
-	public static final String VERSION = "1.1.9";
+	public static final String VERSION = "1.1.10";
 	
 	@Instance(MODID)
 	public static FurenikusRoads instance;
@@ -144,6 +144,7 @@ public class FurenikusRoads {
 	
 	@EventHandler
     public void postInit(FMLPostInitializationEvent event) {
+		proxy.postInit();
 		RecipeRegistry.init();
 	}
     
