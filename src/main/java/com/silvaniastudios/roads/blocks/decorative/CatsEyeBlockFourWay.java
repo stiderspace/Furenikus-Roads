@@ -1,6 +1,8 @@
-package com.silvaniastudios.roads.blocks;
+package com.silvaniastudios.roads.blocks.decorative;
 
 import javax.annotation.Nullable;
+
+import com.silvaniastudios.roads.blocks.NonPaintRoadTopBlock;
 
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
@@ -125,7 +127,7 @@ public class CatsEyeBlockFourWay extends NonPaintRoadTopBlock {
 	@Override
     public Vec3d getOffset(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
 		int thisMeta = getMetaFromState(worldIn.getBlockState(pos));
-		if (thisMeta == 0 || thisMeta == 1) {
+		if (thisMeta <= 3) {
 			double offset = 1.0 - getBlockBelowHeight(worldIn, pos);
 	        return new Vec3d(0, -offset, 0);
 		}

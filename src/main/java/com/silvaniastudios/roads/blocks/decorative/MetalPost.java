@@ -1,6 +1,7 @@
-package com.silvaniastudios.roads.blocks;
+package com.silvaniastudios.roads.blocks.decorative;
 
 import com.silvaniastudios.roads.FurenikusRoads;
+import com.silvaniastudios.roads.blocks.BlockBase;
 import com.silvaniastudios.roads.blocks.enums.IPostConnectable;
 
 import net.minecraft.block.Block;
@@ -65,10 +66,10 @@ public class MetalPost extends BlockBase implements IPostConnectable {
 			return true;
 		}
 		
-		if (this.horizontal && block.getBlockFaceShape(worldIn, state, pos, facing.getOpposite()) == BlockFaceShape.SOLID) {
+		if (this.horizontal && block.getBlockFaceShape(worldIn, state, pos, facing.getOpposite()) == BlockFaceShape.SOLID || block instanceof MetalPost || block instanceof StreetLight) {
 			return true;
 		}
-		if (block instanceof MetalPost) {
+		if (block instanceof MetalPost || block instanceof StreetLight) {
 			MetalPost post = (MetalPost) block;
 			return post.horizontal;
 		}
@@ -160,5 +161,10 @@ public class MetalPost extends BlockBase implements IPostConnectable {
     @Override
     public boolean isOpaqueCube(IBlockState state) {
         return false;
+    }
+    
+    @Override
+    public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+    	return BlockFaceShape.UNDEFINED;
     }
 }

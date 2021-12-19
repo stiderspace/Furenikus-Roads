@@ -1,4 +1,4 @@
-package com.silvaniastudios.roads.blocks;
+package com.silvaniastudios.roads.blocks.decorative;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;

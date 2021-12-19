@@ -1,4 +1,4 @@
-package com.silvaniastudios.roads.blocks;
+package com.silvaniastudios.roads.blocks.decorative;
 
 import javax.annotation.Nullable;
 

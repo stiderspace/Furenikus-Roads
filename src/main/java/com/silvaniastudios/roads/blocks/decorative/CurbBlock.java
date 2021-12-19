@@ -1,9 +1,11 @@
-package com.silvaniastudios.roads.blocks;
+package com.silvaniastudios.roads.blocks.decorative;
 
 import javax.annotation.Nullable;
 
 import com.silvaniastudios.roads.FurenikusRoads;
 import com.silvaniastudios.roads.RoadsConfig;
+import com.silvaniastudios.roads.blocks.BlockBase;
+import com.silvaniastudios.roads.blocks.BlockFakeLight;
 import com.silvaniastudios.roads.blocks.enums.IConnectable;
 import com.silvaniastudios.roads.blocks.enums.IMetaBlockName;
 import com.silvaniastudios.roads.blocks.enums.IPostConnectable;
@@ -340,11 +342,13 @@ public class CurbBlock extends BlockBase implements IMetaBlockName {
 			IBlockState endBlock = worldIn.getBlockState(sideOffset);
 			if (endBlock.getBlock() != Blocks.AIR) {
 				IBlockState endState = worldIn.getBlockState(sideOffset.offset(EnumFacing.UP));
+				System.out.println("endstate: " + endState.getBlock().getLocalizedName());
 				if (endState.getBlock() instanceof BlockBase &&
 						!(endState.getBlock() instanceof PaintBlockBase) &&
 						!(endState.getBlock() instanceof IConnectable) &&
 						!(endState.getBlock() instanceof IPostConnectable) &&
-						!(endState.getBlock() instanceof BlockFakeLight)) {
+						!(endState.getBlock() instanceof BlockFakeLight) &&
+						(endState.getBlock().isFullBlock(endState))) {
 					return endState.getBoundingBox(worldIn, sideOffset.offset(EnumFacing.UP)).maxY-countDown;
 				}
 				return endBlock.getBoundingBox(worldIn, sideOffset).maxY-countDown-1;

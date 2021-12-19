@@ -1,5 +1,6 @@
-package com.silvaniastudios.roads.blocks;
+package com.silvaniastudios.roads.blocks.decorative;
 
+import com.silvaniastudios.roads.blocks.FRBlocks;
 import com.silvaniastudios.roads.blocks.enums.EnumSimpleRotation;
 
 import net.minecraft.block.Block;

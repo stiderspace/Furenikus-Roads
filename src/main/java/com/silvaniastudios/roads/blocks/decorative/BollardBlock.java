@@ -1,7 +1,8 @@
-package com.silvaniastudios.roads.blocks;
+package com.silvaniastudios.roads.blocks.decorative;
 
 import javax.annotation.Nullable;
 
+import com.silvaniastudios.roads.blocks.NonPaintRoadTopBlock;
 import com.silvaniastudios.roads.blocks.enums.IMetaBlockName;
 
 import net.minecraft.block.properties.IProperty;

@@ -1,10 +1,12 @@
-package com.silvaniastudios.roads.blocks;
+package com.silvaniastudios.roads.blocks.decorative;
 
 import java.util.List;
 
 import javax.annotation.Nullable;
 
 import com.silvaniastudios.roads.FurenikusRoads;
+import com.silvaniastudios.roads.blocks.BlockBase;
+import com.silvaniastudios.roads.blocks.NonPaintRoadTopBlock;
 import com.silvaniastudios.roads.blocks.paint.PaintBlockBase;
 import com.silvaniastudios.roads.items.FRItems;
 
@@ -399,6 +401,8 @@ public class BarrierEdgeBlock extends BlockBase {
 	public void initModel() {
 		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0,  new ModelResourceLocation(getRegistryName(), "inventory"));
 	}
+	
+
 	
 	public enum EnumBarrierSide implements IStringSerializable {
 		NORMAL(0, "normal"),
