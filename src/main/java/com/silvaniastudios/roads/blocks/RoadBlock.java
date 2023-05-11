@@ -8,6 +8,7 @@ import com.silvaniastudios.roads.items.FRItems;
 import com.silvaniastudios.roads.items.RoadItemBase;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockSlab;
 import net.minecraft.block.BlockSnow;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -16,6 +17,7 @@ import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -25,6 +27,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ForgeModContainer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -164,50 +167,41 @@ public class RoadBlock extends BlockBase {
     public boolean isOpaqueCube(IBlockState state) {
         return this.getMetaFromState(state) == 15;
     }
-    
-    //Checks on full-size blocks
-    public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
-    	return checkSideRendering(state, world, pos, face);
-    }
-    
+
+   	@Override
+	public boolean canCreatureSpawn(IBlockState state, IBlockAccess world, BlockPos pos, EntityLiving.SpawnPlacementType type) {
+		return false;
+	}
+
     //Checks on non-full-size blocks
+	@SideOnly(Side.CLIENT)
     public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
 		return checkSideRendering(state, world, pos, face);
     }
 
-	private boolean checkSideRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
-		IBlockState offsetState = world.getBlockState(pos.offset(face));
 
-		if (face == EnumFacing.UP && this.getMetaFromState(state) < 15) {
-			return true; //There's no reason for non-full height road blocks to ever cull.
-		}
+	public boolean checkSideRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		if(this.getMetaFromState(state) < 15) {
+			if (ForgeModContainer.disableStairSlabCulling) {
+				return super.doesSideBlockRendering(state, world, pos, face);
+			} else if (state.isOpaqueCube()) {
+				return true;
 
-		if (offsetState.getBlock() instanceof RoadBlock && offsetState.getBlock().getMetaFromState(offsetState) >= getMetaFromState(state)) {
-			return false;
-		}
-		if(!(offsetState.getBlock().getBlockLayer().equals(BlockRenderLayer.SOLID)))
+			} else{
+				return face == EnumFacing.UP ||face == EnumFacing.DOWN;
+			}
+		}else
 		{
-
-			return true;
+			return state.isOpaqueCube();
 		}
-		if((offsetState.getBlock() instanceof RoadBlock) && face == EnumFacing.UP && offsetState.getBlock().getMetaFromState(offsetState) < 15)
-		{
-			System.out.println(offsetState.getBlock().getBlockLayer().toString() + "--" + offsetState.getBlock().getLocalizedName());
-			return true;
-		}
-		if (offsetState.getBlockFaceShape(world, pos.offset(face), face.getOpposite()) == BlockFaceShape.SOLID) {
-			return false;
-		}
-
-		return true;
 	}
 
     @Override
     public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
-    	if (this.getMetaFromState(state) < 15 && face != EnumFacing.DOWN && face != EnumFacing.UP) {
-    		return BlockFaceShape.UNDEFINED;
-    	}
-    	
-        return BlockFaceShape.SOLID;
-    }
+		if (this.getMetaFromState(state) == 15) {
+			return BlockFaceShape.SOLID;
+		}  else {
+			return face == EnumFacing.DOWN  ? BlockFaceShape.SOLID : BlockFaceShape.UNDEFINED;
+		}
+	}
 }

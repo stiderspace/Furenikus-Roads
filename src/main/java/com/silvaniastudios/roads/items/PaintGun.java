@@ -161,10 +161,6 @@ public class PaintGun extends RoadItemBase {
 					return new ActionResult<ItemStack>(EnumActionResult.PASS, player.getHeldItem(handIn));
 				}
 			}
-		} else {
-			//They're not aiming at any block, so they're not trying to place paint. Might as well give them the GUI.
-			FurenikusRoads.proxy.openGui(0);
-			return new ActionResult<ItemStack>(EnumActionResult.PASS, player.getHeldItem(handIn));
 		}
 
 		if (player.isSneaking()) {
@@ -175,7 +171,7 @@ public class PaintGun extends RoadItemBase {
 	}
 
 	public boolean selectBlockToPlace(NBTTagCompound nbt, World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, EntityPlayer player, EnumHand hand, int col) {
-		if (RoadsConfig.general.debugLevel >= 1) {
+		if (RoadsConfig.general.debugLevel >= 3) {
 			System.out.println("PaintGun#selectBlockToPlace called. Trying to find where it's called from...");
 			StackTraceElement[] ste = Thread.currentThread().getStackTrace();
 			for (int i = 0; i < ste.length; i++) {
@@ -183,6 +179,7 @@ public class PaintGun extends RoadItemBase {
 			}
 		}
 
+		System.out.println(selection);
 
 		int selection = nbt.getInteger("selectedId");
 		int pageId = nbt.getInteger("pageId");

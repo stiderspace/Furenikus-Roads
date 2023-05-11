@@ -74,63 +74,6 @@ public class PaintBlockBase extends BlockBase {
 	@SuppressWarnings("deprecation")
 	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
 		ItemStack item = player.getHeldItem(EnumHand.MAIN_HAND);
-		if (item.getItem() instanceof PaintGun) {
-			if (getItem(world, pos, state).getItem() instanceof ItemBlock && item.hasTagCompound()) {
-				Block block = ((ItemBlock) getItem(world, pos, state).getItem()).getBlock();
-				if (block instanceof PaintBlockBase) {
-					PaintBlockBase whiteBlock = PaintGunItemRegistry.getWhite((PaintBlockBase) block);
-					NBTTagCompound nbt = item.getTagCompound();
-					int pageId = nbt.getInteger("pageId");
-					int id = nbt.getInteger("selectedId");
-					int selMeta = nbt.getInteger("selMeta");
-					int selectedColour = nbt.getInteger("colour");
-					boolean isLarge = nbt.getBoolean("isLarge");
-					
-					int blockMeta = getMetaFromState(state);
-					
-					int lineId = PaintGunItemRegistry.findLineId(whiteBlock, blockMeta);
-					int iconId = PaintGunItemRegistry.findIconId(whiteBlock, blockMeta);
-					int letterId = PaintGunItemRegistry.findLetterId(whiteBlock, blockMeta);
-					int textId = PaintGunItemRegistry.findTextId(whiteBlock, blockMeta);
-					int junctionId = PaintGunItemRegistry.findJunctionId(whiteBlock, blockMeta);
-					
-					if (lineId <= PaintGunItemRegistry.lines.size() && lineId >= 0) {
-						pageId = 1;
-						id = lineId;
-						selMeta = PaintGunItemRegistry.linesMeta.get(lineId);
-					}
-					
-					if (iconId <= PaintGunItemRegistry.icons.size() && iconId >= 0) {
-						pageId = 2;
-						id = iconId;
-						selMeta = PaintGunItemRegistry.iconsMeta.get(iconId);
-					}
-					
-					if (letterId <= PaintGunItemRegistry.letters.size() && letterId >= 0) {
-						pageId = 3;
-						id = letterId;
-						selMeta = PaintGunItemRegistry.lettersMeta.get(letterId);
-					}
-					
-					if (textId <= PaintGunItemRegistry.text.size() && textId >= 0) {
-						pageId = 4;
-						id = textId;
-						selMeta = PaintGunItemRegistry.textMeta.get(textId);
-						if (selMeta == 4) { isLarge = true; }
-					}
-					
-					if (junctionId <= PaintGunItemRegistry.junction.size() && junctionId >= 0) {
-						pageId = 5;
-						id = junctionId;
-						selMeta = PaintGunItemRegistry.junctionMeta.get(junctionId);
-					}
-					
-					//This is all client-side only because reasons, so gotta send a packety boi
-					FurenikusRoads.PACKET_CHANNEL.sendToServer(new PaintGunUpdatePacket(id, selMeta, selectedColour, pageId, isLarge));
-					return ItemStack.EMPTY;
-				}
-			}
-		}
 		return getItem(world, pos, state);
 	}
 	

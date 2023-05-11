@@ -15,6 +15,7 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class RecipeRegistry {
 	
@@ -185,43 +186,47 @@ public class RecipeRegistry {
 		ItemStack redstone = new ItemStack(Items.REDSTONE, 1, 0);
 		
 		int i = 0;
-		
-		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot, empty, empty, empty, empty, empty, new ItemStack(FRBlocks.post_small_vertical, 2, 0)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot, empty, empty, empty, empty, empty, new ItemStack(FRBlocks.post_small_vertical_2, 2, 0)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot, empty, empty, empty, empty, empty, new ItemStack(FRBlocks.post_small_horizontal, 2, 0)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot_2, empty, empty, empty, empty, empty, new ItemStack(FRBlocks.post_medium_vertical, 2, 0)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot_2, empty, empty, empty, empty, empty, new ItemStack(FRBlocks.post_medium_vertical_2, 2, 0)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot_2, empty, empty, empty, empty, empty, new ItemStack(FRBlocks.post_medium_horizontal, 2, 0)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.IRON_INGOT, 3), empty, empty, empty, empty, empty, new ItemStack(FRBlocks.post_large_vertical, 2, 0)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.IRON_INGOT, 3), empty, empty, empty, empty, empty, new ItemStack(FRBlocks.post_large_vertical_2, 2, 0)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.IRON_INGOT, 3), empty, empty, empty, empty, empty, new ItemStack(FRBlocks.post_large_horizontal, 2, 0)));
-		
-		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot_2, new ItemStack(Items.GLOWSTONE_DUST, 1), new ItemStack(Blocks.GLASS_PANE, 1), empty, empty, empty, new ItemStack(FRBlocks.street_light_1, 2, 0)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot_2, new ItemStack(Items.GLOWSTONE_DUST, 1), new ItemStack(Blocks.GLASS_PANE, 1), empty, empty, empty, new ItemStack(FRBlocks.street_light_2, 2, 0)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot_2, new ItemStack(Items.GLOWSTONE_DUST, 1), new ItemStack(Blocks.GLASS_PANE, 1), empty, empty, empty, new ItemStack(FRBlocks.street_light_3, 2, 0)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot_2, new ItemStack(Items.GLOWSTONE_DUST, 1), new ItemStack(Blocks.GLASS_PANE, 1), empty, empty, empty, new ItemStack(FRBlocks.street_light_4, 2, 0)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot_2, new ItemStack(Items.GLOWSTONE_DUST, 1), new ItemStack(Blocks.GLASS_PANE, 1), empty, empty, empty, new ItemStack(FRBlocks.street_light_5, 2, 0)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot_2, new ItemStack(Items.GLOWSTONE_DUST, 1), new ItemStack(Blocks.GLASS_PANE, 1), empty, empty, empty, new ItemStack(FRBlocks.street_light_6, 2, 0)));
+
+
+		//post
+		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot, empty, empty, empty, empty, empty, new ItemStack(FRBlocks.post_small_vertical, 16, 0)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot, empty, empty, empty, empty, empty, new ItemStack(FRBlocks.post_small_vertical_2, 16, 0)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot, empty, empty, empty, empty, empty, new ItemStack(FRBlocks.post_small_horizontal, 16, 0)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot_2, empty, empty, empty, empty, empty, new ItemStack(FRBlocks.post_medium_vertical, 16, 0)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot_2, empty, empty, empty, empty, empty, new ItemStack(FRBlocks.post_medium_vertical_2, 16, 0)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot_2, empty, empty, empty, empty, empty, new ItemStack(FRBlocks.post_medium_horizontal, 16, 0)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.IRON_INGOT, 3), empty, empty, empty, empty, empty, new ItemStack(FRBlocks.post_large_vertical, 16, 0)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.IRON_INGOT, 3), empty, empty, empty, empty, empty, new ItemStack(FRBlocks.post_large_vertical_2, 16, 0)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.IRON_INGOT, 3), empty, empty, empty, empty, empty, new ItemStack(FRBlocks.post_large_horizontal, 16, 0)));
+
+		//lamps
+		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot_2, new ItemStack(Items.GLOWSTONE_DUST, 1), new ItemStack(Blocks.GLASS_PANE, 1), empty, empty, empty, new ItemStack(FRBlocks.street_light_1, 8, 0)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot_2, new ItemStack(Items.GLOWSTONE_DUST, 1), new ItemStack(Blocks.GLASS_PANE, 1), empty, empty, empty, new ItemStack(FRBlocks.street_light_2, 8, 0)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot_2, new ItemStack(Items.GLOWSTONE_DUST, 1), new ItemStack(Blocks.GLASS_PANE, 1), empty, empty, empty, new ItemStack(FRBlocks.street_light_3, 8, 0)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot_2, new ItemStack(Items.GLOWSTONE_DUST, 1), new ItemStack(Blocks.GLASS_PANE, 1), empty, empty, empty, new ItemStack(FRBlocks.street_light_4, 8, 0)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot_2, new ItemStack(Items.GLOWSTONE_DUST, 1), new ItemStack(Blocks.GLASS_PANE, 1), empty, empty, empty, new ItemStack(FRBlocks.street_light_5, 8, 0)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot_2, new ItemStack(Items.GLOWSTONE_DUST, 1), new ItemStack(Blocks.GLASS_PANE, 1), empty, empty, empty, new ItemStack(FRBlocks.street_light_6, 8, 0)));
 		
 		//Barriers
-		fabricatorRecipes.add(new FabricatorRecipes(i++, black_dye, iron_ingot, yellow_dye, empty, iron_ingot, empty, new ItemStack(FRBlocks.barrier_end, 4, 0)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot, iron_ingot, iron_ingot, empty, empty, empty, new ItemStack(FRBlocks.barrier_standard_mid, 4, 0)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot, iron_ingot, iron_ingot, iron_ingot, iron_ingot, iron_ingot, new ItemStack(FRBlocks.barrier_tall_mid, 4, 0)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, concrete_1, empty, empty, concrete_1, empty, new ItemStack(FRBlocks.barrier_concrete_1_mid, 4, 0)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, concrete_2, empty, empty, concrete_2, empty, new ItemStack(FRBlocks.barrier_concrete_2_mid, 4, 0)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, iron_bars, empty, empty, new ItemStack(Blocks.IRON_BARS), empty, new ItemStack(FRBlocks.barrier_bars_mid, 2, 0)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, iron_bars, empty, empty, new ItemStack(Blocks.IRON_BARS), empty, new ItemStack(FRBlocks.barrier_bars_mid_2, 2, 0)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, iron_bars, empty, empty, new ItemStack(Blocks.IRON_BARS), empty, new ItemStack(FRBlocks.barrier_bars_mid_3, 2, 0)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, concrete_1, concrete_1, concrete_1, empty, empty, empty, new ItemStack(FRBlocks.barrier_wall_mid_concrete_1, 6, 0)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, concrete_2, concrete_2, concrete_2, empty, empty, empty, new ItemStack(FRBlocks.barrier_wall_mid_concrete_2, 6, 0)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_bars, concrete_1, iron_bars, empty, empty, empty, new ItemStack(FRBlocks.barrier_bars_mid_concrete_1, 6, 0)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_bars, concrete_2, iron_bars, empty, empty, empty, new ItemStack(FRBlocks.barrier_bars_mid_concrete_2, 6, 0)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, black_dye, iron_ingot, yellow_dye, empty, empty, empty, new ItemStack(FRBlocks.barrier_end, 16, 0)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot, iron_ingot, iron_ingot, empty, empty, empty, new ItemStack(FRBlocks.barrier_standard_mid, 16, 0)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot, iron_ingot, iron_ingot, iron_ingot, iron_ingot, iron_ingot, new ItemStack(FRBlocks.barrier_tall_mid, 16, 0)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, concrete_1, empty, empty, concrete_1, empty, new ItemStack(FRBlocks.barrier_concrete_1_mid, 8, 0)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, concrete_2, empty, empty, concrete_2, empty, new ItemStack(FRBlocks.barrier_concrete_2_mid, 8, 0)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, iron_bars, empty, empty, new ItemStack(Blocks.IRON_BARS), empty, new ItemStack(FRBlocks.barrier_bars_mid, 6, 0)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, iron_bars, empty, empty, new ItemStack(Blocks.IRON_BARS), empty, new ItemStack(FRBlocks.barrier_bars_mid_2, 6, 0)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, iron_bars, empty, empty, new ItemStack(Blocks.IRON_BARS), empty, new ItemStack(FRBlocks.barrier_bars_mid_3, 6, 0)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, concrete_1, concrete_1, concrete_1, empty, empty, empty, new ItemStack(FRBlocks.barrier_wall_mid_concrete_1, 8, 0)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, concrete_2, concrete_2, concrete_2, empty, empty, empty, new ItemStack(FRBlocks.barrier_wall_mid_concrete_2, 8, 0)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_bars, concrete_1, iron_bars, empty, empty, empty, new ItemStack(FRBlocks.barrier_bars_mid_concrete_1, 8, 0)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_bars, concrete_2, iron_bars, empty, empty, empty, new ItemStack(FRBlocks.barrier_bars_mid_concrete_2, 8, 0)));
 		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, iron_bars, empty, concrete_1, concrete_1, concrete_1, new ItemStack(FRBlocks.barrier_wall_pole_mid_concrete_1, 8, 0)));
 		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, iron_bars, empty, concrete_2, concrete_2, concrete_2, new ItemStack(FRBlocks.barrier_wall_pole_mid_concrete_2, 8, 0)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, empty, empty, iron_ingot, iron_ingot, iron_ingot, new ItemStack(FRBlocks.barrier_low_mid, 6, 0)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, empty, empty, iron_ingot, iron_ingot, iron_ingot, new ItemStack(FRBlocks.barrier_low_mid, 16, 0)));
+
 		//Edge barriers
-		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(FRBlocks.barrier_standard_mid, 1, 0), empty, empty, empty, empty, empty, new ItemStack(FRBlocks.barrier_standard_edge, 1, 0)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(FRBlocks.barrier_tall_mid, 1, 0), empty, empty, empty, empty, empty, new ItemStack(FRBlocks.barrier_tall_edge, 1, 0)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(FRBlocks.barrier_standard_mid, 1, 0), empty, empty, empty, empty, empty, new ItemStack(FRBlocks.barrier_standard_edge, 2, 0)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(FRBlocks.barrier_tall_mid, 1, 0), empty, empty, empty, empty, empty, new ItemStack(FRBlocks.barrier_tall_edge, 2, 0)));
 		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(FRBlocks.barrier_concrete_1_mid, 1, 0), empty, empty, empty, empty, empty, new ItemStack(FRBlocks.barrier_concrete_edge_1, 1, 0)));
 		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(FRBlocks.barrier_concrete_2_mid, 1, 0), empty, empty, empty, empty, empty, new ItemStack(FRBlocks.barrier_concrete_edge_2, 1, 0)));
 		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(FRBlocks.barrier_bars_mid, 1, 0), empty, empty, empty, empty, empty, new ItemStack(FRBlocks.barrier_bars_edge, 1, 0)));
@@ -234,6 +239,7 @@ public class RecipeRegistry {
 		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(FRBlocks.barrier_wall_pole_mid_concrete_1, 1, 0), empty, empty, empty, empty, empty, new ItemStack(FRBlocks.barrier_wall_pole_edge_concrete_1, 1, 0)));
 		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(FRBlocks.barrier_wall_pole_mid_concrete_2, 1, 0), empty, empty, empty, empty, empty, new ItemStack(FRBlocks.barrier_wall_pole_edge_concrete_2, 1, 0)));
 		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(FRBlocks.barrier_low_mid, 1, 0), empty, empty, empty, empty, empty, new ItemStack(FRBlocks.barrier_low_edge, 1, 0)));
+
 		//Double
 		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(FRBlocks.barrier_standard_edge, 1, 0), new ItemStack(FRBlocks.barrier_standard_edge, 1, 0), empty, empty, empty, empty, new ItemStack(FRBlocks.barrier_standard_edge_double, 1, 0)));
 		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(FRBlocks.barrier_tall_edge, 1, 0), new ItemStack(FRBlocks.barrier_tall_edge, 1, 0), empty, empty, empty, empty, new ItemStack(FRBlocks.barrier_tall_edge_double, 1, 0)));
@@ -246,42 +252,50 @@ public class RecipeRegistry {
 		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(FRBlocks.barrier_bars_edge_concrete_2, 1, 0), new ItemStack(FRBlocks.barrier_bars_edge_concrete_2, 1, 0), empty, empty, empty, empty, new ItemStack(FRBlocks.barrier_bars_edge_concrete_2_double, 1, 0)));
 		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(FRBlocks.barrier_wall_pole_edge_concrete_1, 1, 0), new ItemStack(FRBlocks.barrier_wall_pole_edge_concrete_1, 1, 0), empty, empty, empty, empty, new ItemStack(FRBlocks.barrier_wall_pole_edge_concrete_1_double, 1, 0)));
 		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(FRBlocks.barrier_wall_pole_edge_concrete_2, 1, 0), new ItemStack(FRBlocks.barrier_wall_pole_edge_concrete_2, 1, 0), empty, empty, empty, empty, new ItemStack(FRBlocks.barrier_wall_pole_edge_concrete_2_double, 1, 0)));
-		
+
+		//bollard
 		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Blocks.STAINED_GLASS_PANE, 1, 0), new ItemStack(Blocks.REDSTONE_LAMP), new ItemStack(Blocks.STAINED_GLASS_PANE, 1, 0), new ItemStack(Blocks.STAINED_GLASS_PANE, 1, 11), new ItemStack(Blocks.STONE_PRESSURE_PLATE), new ItemStack(Blocks.STAINED_GLASS_PANE, 1, 4), new ItemStack(FRBlocks.bollard_1, 4, 0)));
 		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Blocks.STAINED_GLASS_PANE, 1, 0), new ItemStack(Blocks.REDSTONE_LAMP), new ItemStack(Blocks.STAINED_GLASS_PANE, 1, 0), new ItemStack(Blocks.STAINED_GLASS_PANE, 1, 11), new ItemStack(Blocks.STONE_PRESSURE_PLATE), new ItemStack(Blocks.STAINED_GLASS_PANE, 1, 4), new ItemStack(FRBlocks.bollard_1, 4, 2)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Blocks.STAINED_GLASS_PANE, 1, 0), new ItemStack(Blocks.REDSTONE_LAMP), new ItemStack(Blocks.STAINED_GLASS_PANE, 1, 0), new ItemStack(Blocks.STAINED_GLASS_PANE, 1, 11), new ItemStack(Blocks.STONE_PRESSURE_PLATE), new ItemStack(Blocks.STAINED_GLASS_PANE, 1, 4), new ItemStack(FRBlocks.bollard_1, 8, 4)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Blocks.STAINED_GLASS_PANE, 1, 0), new ItemStack(Blocks.REDSTONE_LAMP), new ItemStack(Blocks.STAINED_GLASS_PANE, 1, 0), new ItemStack(Blocks.STAINED_GLASS_PANE, 1, 11), new ItemStack(Blocks.STONE_PRESSURE_PLATE), new ItemStack(Blocks.STAINED_GLASS_PANE, 1, 4), new ItemStack(FRBlocks.bollard_1, 8, 6)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, concrete_1, empty, empty, concrete_1, empty, new ItemStack(FRBlocks.bollard_2, 8, 0)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Blocks.STAINED_GLASS_PANE, 1, 0), new ItemStack(Blocks.REDSTONE_LAMP), new ItemStack(Blocks.STAINED_GLASS_PANE, 1, 0), new ItemStack(Blocks.STAINED_GLASS_PANE, 1, 11), new ItemStack(Blocks.STONE_PRESSURE_PLATE), new ItemStack(Blocks.STAINED_GLASS_PANE, 1, 4), new ItemStack(FRBlocks.bollard_1, 4, 4)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Blocks.STAINED_GLASS_PANE, 1, 0), new ItemStack(Blocks.REDSTONE_LAMP), new ItemStack(Blocks.STAINED_GLASS_PANE, 1, 0), new ItemStack(Blocks.STAINED_GLASS_PANE, 1, 11), new ItemStack(Blocks.STONE_PRESSURE_PLATE), new ItemStack(Blocks.STAINED_GLASS_PANE, 1, 4), new ItemStack(FRBlocks.bollard_1, 4, 6)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, concrete_1, empty, empty, concrete_1, empty, new ItemStack(FRBlocks.bollard_2, 8, 0)));//Concrete 1
 		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, concrete_2, empty, empty, concrete_2, empty, new ItemStack(FRBlocks.bollard_2, 8, 1)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, iron_ingot_2, empty, empty, iron_ingot_2, empty, new ItemStack(FRBlocks.bollard_2, 4, 2)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, black_dye, iron_ingot_2, yellow_dye, black_dye, iron_ingot_2, yellow_dye, new ItemStack(FRBlocks.bollard_2, 4, 3)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, black_dye, iron_ingot_2, new ItemStack(Items.DYE, 1, 15), empty, new ItemStack(Items.IRON_INGOT, 2), empty, new ItemStack(FRBlocks.bollard_2, 4, 4)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, yellow_dye, iron_ingot_2, yellow_dye, empty, iron_ingot_2, empty, new ItemStack(FRBlocks.bollard_2, 4, 5)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, iron_ingot, empty, empty, iron_ingot, empty, new ItemStack(FRBlocks.bollard_2, 4, 6)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, black_dye, iron_ingot, yellow_dye, black_dye, iron_ingot, yellow_dye, new ItemStack(FRBlocks.bollard_2, 4, 7)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, black_dye, iron_ingot, new ItemStack(Items.DYE, 1, 15), empty, iron_ingot, empty, new ItemStack(FRBlocks.bollard_2, 4, 8)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, yellow_dye, iron_ingot, yellow_dye, empty, iron_ingot, empty, new ItemStack(FRBlocks.bollard_2, 4, 9)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, iron_ingot, empty, empty, iron_ingot, empty, new ItemStack(FRBlocks.bollard_2, 4, 2)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, black_dye, iron_ingot, yellow_dye, black_dye, iron_ingot, yellow_dye, new ItemStack(FRBlocks.bollard_2, 4, 3)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, black_dye, iron_ingot, new ItemStack(Items.DYE, 1, 15), empty, iron_ingot, empty, new ItemStack(FRBlocks.bollard_2, 4, 4)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, yellow_dye, iron_ingot, yellow_dye, empty, iron_ingot, empty, new ItemStack(FRBlocks.bollard_2, 4, 5)));
+
+		//thin bollard
+		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, iron_ingot, empty, empty, empty, empty, new ItemStack(FRBlocks.bollard_2, 4, 6)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, black_dye, iron_ingot, yellow_dye, empty, empty, empty, new ItemStack(FRBlocks.bollard_2, 4, 7)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, black_dye, iron_ingot, new ItemStack(Items.DYE, 1, 15), empty, empty, empty, new ItemStack(FRBlocks.bollard_2, 4, 8)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, yellow_dye, iron_ingot, yellow_dye, empty, empty, empty, new ItemStack(FRBlocks.bollard_2, 4, 9)));
 		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.IRON_NUGGET), iron_ingot, new ItemStack(Items.IRON_NUGGET), black_dye, iron_ingot, black_dye, new ItemStack(FRBlocks.bollard_2, 4, 10)));
 		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.GOLD_NUGGET), new ItemStack(FRBlocks.bollard_2, 4, 10), new ItemStack(Items.GOLD_NUGGET), empty, empty, empty, new ItemStack(FRBlocks.bollard_2, 4, 11)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.GLOWSTONE_DUST), iron_ingot_2, new ItemStack(Items.GLOWSTONE_DUST), empty, new ItemStack(Items.IRON_INGOT, 2), empty, new ItemStack(FRBlocks.bollard_2, 4, 12)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.GLOWSTONE_DUST), iron_ingot_2, new ItemStack(Items.GLOWSTONE_DUST), black_dye, new ItemStack(Items.IRON_INGOT, 2), black_dye, new ItemStack(FRBlocks.bollard_2, 4, 13)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.GLOWSTONE_DUST), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), empty, iron_ingot, empty, new ItemStack(FRBlocks.bollard_2, 4, 12)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.GLOWSTONE_DUST), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), black_dye, iron_ingot, black_dye, new ItemStack(FRBlocks.bollard_2, 4, 13)));
 		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1, 14), iron_ingot, new ItemStack(Items.DYE, 1, 14), empty, iron_ingot, empty, new ItemStack(FRBlocks.bollard_2, 4, 14)));
 		fabricatorRecipes.add(new FabricatorRecipes(i++, yellow_dye, iron_ingot, yellow_dye, empty, iron_ingot, empty, new ItemStack(FRBlocks.bollard_2, 4, 15)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, iron_ingot_2, empty, empty, piston, empty, new ItemStack(FRBlocks.bollard_3, 2, 0)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, iron_ingot_2, empty, empty, piston, empty, new ItemStack(FRBlocks.bollard_3, 2, 2)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, new ItemStack(Items.IRON_INGOT, 3), empty, empty, piston, empty, new ItemStack(FRBlocks.bollard_3, 2, 4)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, new ItemStack(Items.IRON_INGOT, 3), empty, empty, piston, empty, new ItemStack(FRBlocks.bollard_3, 2, 6)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, iron_ingot_2, empty, empty, piston, empty, new ItemStack(FRBlocks.bollard_3, 2, 8)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, iron_ingot_2, empty, empty, piston, empty, new ItemStack(FRBlocks.bollard_3, 2, 10)));
+
+		//retractable bollard
+		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, iron_ingot, empty, empty, piston, empty, new ItemStack(FRBlocks.bollard_3, 2, 0)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, iron_ingot, empty, empty, piston, empty, new ItemStack(FRBlocks.bollard_3, 2, 2)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, iron_ingot_2, empty, empty, piston, empty, new ItemStack(FRBlocks.bollard_3, 2, 4)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, iron_ingot_2, empty, empty, piston, empty, new ItemStack(FRBlocks.bollard_3, 2, 6)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, iron_ingot, empty, empty, piston, empty, new ItemStack(FRBlocks.bollard_3, 2, 8)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, iron_ingot, empty, empty, piston, empty, new ItemStack(FRBlocks.bollard_3, 2, 10)));
 		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, iron_ingot, empty, empty, piston, empty, new ItemStack(FRBlocks.bollard_3, 2, 12)));
 		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, iron_ingot, empty, empty, piston, empty, new ItemStack(FRBlocks.bollard_3, 2, 14)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, yellow_dye, iron_ingot, yellow_dye, empty, redstone, empty, new ItemStack(FRBlocks.bollard_folding_yellow, 1, 0)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, yellow_dye, iron_ingot_2, yellow_dye, empty, redstone, empty, new ItemStack(FRBlocks.bollard_folding_yellow, 1, 8)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, iron_ingot, empty, empty, redstone, empty, new ItemStack(FRBlocks.bollard_folding_smooth_metal, 1, 0)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, iron_ingot_2, empty, empty, redstone, empty, new ItemStack(FRBlocks.bollard_folding_smooth_metal, 1, 8)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, black_dye, iron_ingot, black_dye, empty, redstone, empty, new ItemStack(FRBlocks.bollard_folding_black, 1, 0)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, black_dye, iron_ingot_2, black_dye, empty, redstone, empty, new ItemStack(FRBlocks.bollard_folding_black, 1, 8)));
-		
+
+		//folding bollards
+		fabricatorRecipes.add(new FabricatorRecipes(i++, yellow_dye, iron_ingot, yellow_dye, empty, redstone, empty, new ItemStack(FRBlocks.bollard_folding_yellow, 2, 0)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, yellow_dye, iron_ingot, yellow_dye, empty, redstone, empty, new ItemStack(FRBlocks.bollard_folding_yellow, 2, 8)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, iron_ingot, empty, empty, redstone, empty, new ItemStack(FRBlocks.bollard_folding_smooth_metal, 2, 0)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, iron_ingot, empty, empty, redstone, empty, new ItemStack(FRBlocks.bollard_folding_smooth_metal, 2, 8)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, black_dye, iron_ingot, black_dye, empty, redstone, empty, new ItemStack(FRBlocks.bollard_folding_black, 2, 0)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, black_dye, iron_ingot, black_dye, empty, redstone, empty, new ItemStack(FRBlocks.bollard_folding_black, 2, 8)));
+
+
 		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Blocks.STONE, 1, 0), black_dye, new ItemStack(Blocks.STONE, 1, 0), empty, empty, empty, new ItemStack(FRBlocks.speed_bump, 8, 0)));
 		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Blocks.STONE, 1, 0), yellow_dye, new ItemStack(Blocks.STONE, 1, 0), empty, empty, empty, new ItemStack(FRBlocks.speed_bump, 8, 2)));
 		fabricatorRecipes.add(new FabricatorRecipes(i++, concrete_1, empty, concrete_1, empty, empty, empty, new ItemStack(FRBlocks.speed_bump, 8, 4)));
@@ -294,39 +308,42 @@ public class RecipeRegistry {
 		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, empty, empty, empty, concrete_2, empty, new ItemStack(FRBlocks.wheel_stop, 4, 4)));
 		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, yellow_dye, empty, empty, new ItemStack(Blocks.STONE, 1, 0), empty, new ItemStack(FRBlocks.wheel_stop, 4, 8)));
 		fabricatorRecipes.add(new FabricatorRecipes(i++, empty, black_dye, empty, empty, new ItemStack(Blocks.STONE, 1, 0), empty, new ItemStack(FRBlocks.wheel_stop, 4, 12)));
+
+
+		//reglectors
+		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1, 15), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1, 15), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), empty, new ItemStack(FRBlocks.cats_eye_white, 16)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1, 11), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1, 11), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), empty, new ItemStack(FRBlocks.cats_eye_yellow, 16)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1,  1), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1,  1), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), empty, new ItemStack(FRBlocks.cats_eye_red, 16)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1,  2), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1,  2), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), empty, new ItemStack(FRBlocks.cats_eye_green, 16)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1,  4), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1,  4), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), empty, new ItemStack(FRBlocks.cats_eye_blue, 16)));
 		
-		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1, 15), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1, 15), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), iron_ingot, new ItemStack(FRBlocks.cats_eye_white, 2)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1, 11), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1, 11), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), iron_ingot, new ItemStack(FRBlocks.cats_eye_yellow, 2)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1,  1), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1,  1), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), iron_ingot, new ItemStack(FRBlocks.cats_eye_red, 2)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1,  2), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1,  2), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), iron_ingot, new ItemStack(FRBlocks.cats_eye_green, 2)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1,  4), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1,  4), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), iron_ingot, new ItemStack(FRBlocks.cats_eye_blue, 2)));
-		
-		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1,  1), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1,  2), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), iron_ingot, new ItemStack(FRBlocks.cats_eye_red_green, 2)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1, 15), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1,  1), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), iron_ingot, new ItemStack(FRBlocks.cats_eye_white_red, 2)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1, 15), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1, 11), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), iron_ingot, new ItemStack(FRBlocks.cats_eye_white_yellow, 2)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1, 15), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1,  2), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), iron_ingot, new ItemStack(FRBlocks.cats_eye_white_green, 2)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1, 11), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1,  1), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), iron_ingot, new ItemStack(FRBlocks.cats_eye_yellow_red, 2)));
-		
-		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1,  1), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1,  2), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), iron_ingot, new ItemStack(FRBlocks.cats_eye_red_green_double)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1,  1), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1,  2), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), empty, new ItemStack(FRBlocks.cats_eye_red_green, 16)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1, 15), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1,  1), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), empty, new ItemStack(FRBlocks.cats_eye_white_red, 16)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1, 15), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1, 11), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), empty, new ItemStack(FRBlocks.cats_eye_white_yellow, 16)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1, 15), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1,  2), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), empty, new ItemStack(FRBlocks.cats_eye_white_green, 16)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1, 11), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1,  1), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), empty, new ItemStack(FRBlocks.cats_eye_yellow_red, 16)));
+
+		//reglectors DOUBLE
+		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1,  1), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1,  2), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), empty, new ItemStack(FRBlocks.cats_eye_red_green_double,8)));
 		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(FRBlocks.cats_eye_red_green), empty, new ItemStack(FRBlocks.cats_eye_red_green), empty, empty, empty, new ItemStack(FRBlocks.cats_eye_red_green_double)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1, 15), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1,  1), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), iron_ingot, new ItemStack(FRBlocks.cats_eye_white_red_double)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1, 15), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1,  1), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), empty, new ItemStack(FRBlocks.cats_eye_white_red_double,8)));
 		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(FRBlocks.cats_eye_white_red), empty, new ItemStack(FRBlocks.cats_eye_white_red), empty, empty, empty, new ItemStack(FRBlocks.cats_eye_white_red_double)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1, 15), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1, 11), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), iron_ingot, new ItemStack(FRBlocks.cats_eye_white_yellow_double)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1, 15), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1, 11), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), empty, new ItemStack(FRBlocks.cats_eye_white_yellow_double,8)));
 		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(FRBlocks.cats_eye_white_yellow), empty, new ItemStack(FRBlocks.cats_eye_white_yellow), empty, empty, empty, new ItemStack(FRBlocks.cats_eye_white_yellow_double)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1, 15), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1,  2), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), iron_ingot, new ItemStack(FRBlocks.cats_eye_white_green_double)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1, 15), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1,  2), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), empty, new ItemStack(FRBlocks.cats_eye_white_green_double,8)));
 		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(FRBlocks.cats_eye_white_green), empty, new ItemStack(FRBlocks.cats_eye_white_green), empty, empty, empty, new ItemStack(FRBlocks.cats_eye_white_green_double)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1, 11), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1,  1), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), iron_ingot, new ItemStack(FRBlocks.cats_eye_yellow_red_double)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1, 11), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1,  1), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), empty, new ItemStack(FRBlocks.cats_eye_yellow_red_double,8)));
 		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(FRBlocks.cats_eye_yellow_red), empty, new ItemStack(FRBlocks.cats_eye_yellow_red), empty, empty, empty, new ItemStack(FRBlocks.cats_eye_yellow_red_double)));
 		
-		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1, 15), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1, 15), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), iron_ingot, new ItemStack(FRBlocks.cats_eye_white_double)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1, 15), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1, 15), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), empty, new ItemStack(FRBlocks.cats_eye_white_double,8)));
 		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(FRBlocks.cats_eye_white), empty, new ItemStack(FRBlocks.cats_eye_white), empty, empty, empty, new ItemStack(FRBlocks.cats_eye_white_double)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1, 11), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1, 11), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), iron_ingot, new ItemStack(FRBlocks.cats_eye_yellow_double)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1, 11), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1, 11), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), empty, new ItemStack(FRBlocks.cats_eye_yellow_double,8)));
 		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(FRBlocks.cats_eye_yellow), empty, new ItemStack(FRBlocks.cats_eye_yellow), empty, empty, empty, new ItemStack(FRBlocks.cats_eye_yellow_double)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1,  1), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1,  1), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), iron_ingot, new ItemStack(FRBlocks.cats_eye_red_double)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1,  1), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1,  1), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), empty, new ItemStack(FRBlocks.cats_eye_red_double,8)));
 		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(FRBlocks.cats_eye_red), empty, new ItemStack(FRBlocks.cats_eye_red), empty, empty, empty, new ItemStack(FRBlocks.cats_eye_red_double)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1,  2), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1,  2), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), iron_ingot, new ItemStack(FRBlocks.cats_eye_green_double)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1,  2), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1,  2), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), empty, new ItemStack(FRBlocks.cats_eye_green_double,8)));
 		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(FRBlocks.cats_eye_green), empty, new ItemStack(FRBlocks.cats_eye_green), empty, empty, empty, new ItemStack(FRBlocks.cats_eye_green_double)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1,  4), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1,  4), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), iron_ingot, new ItemStack(FRBlocks.cats_eye_blue_double)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Items.DYE, 1,  4), new ItemStack(Blocks.GLASS_PANE), new ItemStack(Items.DYE, 1,  4), iron_ingot, new ItemStack(Items.GLOWSTONE_DUST), empty, new ItemStack(FRBlocks.cats_eye_blue_double,8)));
 		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(FRBlocks.cats_eye_blue), empty, new ItemStack(FRBlocks.cats_eye_blue), empty, empty, empty, new ItemStack(FRBlocks.cats_eye_blue_double)));
 		
 		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Blocks.STONE), empty, new ItemStack(Blocks.STONE), new ItemStack(Blocks.STONE), empty, new ItemStack(Blocks.STONE), new ItemStack(FRBlocks.kerb_standard, 8, 0)));
@@ -335,10 +352,10 @@ public class RecipeRegistry {
 		fabricatorRecipes.add(new FabricatorRecipes(i++, new ItemStack(Blocks.STONE), new ItemStack(Items.DYE, 1,  1), new ItemStack(Blocks.STONE), new ItemStack(Blocks.STONE), new ItemStack(Items.DYE, 1,  1), new ItemStack(Blocks.STONE), new ItemStack(FRBlocks.kerb_standard, 8, 12)));
 		
 		fabricatorRecipes.add(new FabricatorRecipes(i++, yellow_dye, yellow_dye, yellow_dye, new ItemStack(Blocks.STONE_PRESSURE_PLATE), new ItemStack(Blocks.STONE_PRESSURE_PLATE), new ItemStack(Blocks.STONE_PRESSURE_PLATE), new ItemStack(FRBlocks.tactile_crossing_bumps, 16)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot, new ItemStack(FRItems.tool_handle), iron_ingot, empty, empty, empty, new ItemStack(FRBlocks.manhole_cover_round, 4)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot, new ItemStack(FRItems.tool_handle), iron_ingot, empty, empty, empty, new ItemStack(FRBlocks.manhole_cover_square, 4)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot, new ItemStack(FRItems.tool_handle), iron_ingot, empty, empty, empty, new ItemStack(FRBlocks.drain_cover_1, 4)));
-		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot, new ItemStack(FRItems.tool_handle), iron_ingot, empty, empty, empty, new ItemStack(FRBlocks.drain_cover_2, 4)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot, new ItemStack(FRItems.tool_handle), iron_ingot, empty, empty, empty, new ItemStack(FRBlocks.manhole_cover_round, 16)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot, new ItemStack(FRItems.tool_handle), iron_ingot, empty, empty, empty, new ItemStack(FRBlocks.manhole_cover_square, 16)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot, new ItemStack(FRItems.tool_handle), iron_ingot, empty, empty, empty, new ItemStack(FRBlocks.drain_cover_1, 16)));
+		fabricatorRecipes.add(new FabricatorRecipes(i++, iron_ingot, new ItemStack(FRItems.tool_handle), iron_ingot, empty, empty, empty, new ItemStack(FRBlocks.drain_cover_2, 16)));
 		//fabricatorRecipes.add(new FabricatorRecipes(i++, empty, empty, empty, empty, empty, empty, empty));
 	}
 }
